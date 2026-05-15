@@ -1,0 +1,15 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 1
+  metrics: count: path: 1
+  metrics: count: method: 1
+
+  entity: holiday: {
+    path: "/holidays/{year}": {
+      rename: param: "year": *"id"
+      op: load: method: *GET
+    }
+  }
+
+}

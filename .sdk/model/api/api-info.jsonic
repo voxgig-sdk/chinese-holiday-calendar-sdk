@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://api.jiejiariapi.com"
+      }
+      description: "This API provides a comprehensive listing of public holidays in China for the year 2024. It includes the date, name of the holiday, and whether it is an off day or not."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.jiejiariapi.com/v1"
+        }
+      ]
+      title: "Chinese Holiday Calendar"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

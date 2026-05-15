@@ -1,0 +1,67 @@
+<?php
+declare(strict_types=1);
+
+// ChineseHolidayCalendar SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+ChineseHolidayCalendarUtility::setRegistrar(function (ChineseHolidayCalendarUtility $u): void {
+    $u->clean = [ChineseHolidayCalendarClean::class, 'call'];
+    $u->done = [ChineseHolidayCalendarDone::class, 'call'];
+    $u->make_error = [ChineseHolidayCalendarMakeError::class, 'call'];
+    $u->feature_add = [ChineseHolidayCalendarFeatureAdd::class, 'call'];
+    $u->feature_hook = [ChineseHolidayCalendarFeatureHook::class, 'call'];
+    $u->feature_init = [ChineseHolidayCalendarFeatureInit::class, 'call'];
+    $u->fetcher = [ChineseHolidayCalendarFetcher::class, 'call'];
+    $u->make_fetch_def = [ChineseHolidayCalendarMakeFetchDef::class, 'call'];
+    $u->make_context = [ChineseHolidayCalendarMakeContext::class, 'call'];
+    $u->make_options = [ChineseHolidayCalendarMakeOptions::class, 'call'];
+    $u->make_request = [ChineseHolidayCalendarMakeRequest::class, 'call'];
+    $u->make_response = [ChineseHolidayCalendarMakeResponse::class, 'call'];
+    $u->make_result = [ChineseHolidayCalendarMakeResult::class, 'call'];
+    $u->make_point = [ChineseHolidayCalendarMakePoint::class, 'call'];
+    $u->make_spec = [ChineseHolidayCalendarMakeSpec::class, 'call'];
+    $u->make_url = [ChineseHolidayCalendarMakeUrl::class, 'call'];
+    $u->param = [ChineseHolidayCalendarParam::class, 'call'];
+    $u->prepare_auth = [ChineseHolidayCalendarPrepareAuth::class, 'call'];
+    $u->prepare_body = [ChineseHolidayCalendarPrepareBody::class, 'call'];
+    $u->prepare_headers = [ChineseHolidayCalendarPrepareHeaders::class, 'call'];
+    $u->prepare_method = [ChineseHolidayCalendarPrepareMethod::class, 'call'];
+    $u->prepare_params = [ChineseHolidayCalendarPrepareParams::class, 'call'];
+    $u->prepare_path = [ChineseHolidayCalendarPreparePath::class, 'call'];
+    $u->prepare_query = [ChineseHolidayCalendarPrepareQuery::class, 'call'];
+    $u->result_basic = [ChineseHolidayCalendarResultBasic::class, 'call'];
+    $u->result_body = [ChineseHolidayCalendarResultBody::class, 'call'];
+    $u->result_headers = [ChineseHolidayCalendarResultHeaders::class, 'call'];
+    $u->transform_request = [ChineseHolidayCalendarTransformRequest::class, 'call'];
+    $u->transform_response = [ChineseHolidayCalendarTransformResponse::class, 'call'];
+});

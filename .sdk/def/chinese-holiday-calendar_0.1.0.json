@@ -1,0 +1,144 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Chinese Holiday Calendar",
+    "description": "This API provides a comprehensive listing of public holidays in China for the year 2024. It includes the date, name of the holiday, and whether it is an off day or not.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://api.jiejiariapi.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.jiejiariapi.com/v1",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/holidays/{year}": {
+      "get": {
+        "summary": "Get holidays for a specific year",
+        "description": "Returns a comprehensive listing of public holidays in China for the specified year, including the date, name of the holiday, and whether it is an off day or not.",
+        "operationId": "getHolidaysByYear",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "description": "The year for which to retrieve holidays (e.g., 2024)",
+            "schema": {
+              "type": "integer",
+              "minimum": 2000,
+              "maximum": 2100,
+              "example": 2024
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with holiday data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/Holiday"
+                  },
+                  "example": {
+                    "2024-01-01": {
+                      "date": "2024-01-01",
+                      "name": "元旦",
+                      "isOffDay": true
+                    },
+                    "2024-02-10": {
+                      "date": "2024-02-10",
+                      "name": "春节",
+                      "isOffDay": true
+                    },
+                    "2024-04-04": {
+                      "date": "2024-04-04",
+                      "name": "清明节",
+                      "isOffDay": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Year not found or no data available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Holidays"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Holiday": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "The date of the holiday in YYYY-MM-DD format",
+            "example": "2024-01-01"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the holiday in Chinese",
+            "example": "元旦"
+          },
+          "isOffDay": {
+            "type": "boolean",
+            "description": "Whether this is an official day off (true) or a working day during a holiday period (false)",
+            "example": true
+          }
+        },
+        "required": [
+          "date",
+          "name",
+          "isOffDay"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "code": {
+            "type": "integer",
+            "description": "Error code"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Holidays",
+      "description": "Operations related to Chinese public holidays"
+    }
+  ]
+}

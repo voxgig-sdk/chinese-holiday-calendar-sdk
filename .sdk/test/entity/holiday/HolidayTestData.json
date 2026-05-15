@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "holiday": {
+      "HOLIDAY00": {
+        "date": "s1e",
+        "is_off_day": false,
+        "name": "s20"
+      },
+      "HOLIDAY01": {
+        "date": "s3c",
+        "is_off_day": false,
+        "name": "s3e"
+      },
+      "HOLIDAY02": {
+        "date": "s5a",
+        "is_off_day": false,
+        "name": "s5c"
+      }
+    }
+  },
+  "new": {
+    "holiday": {
+      "holiday_ref01": {
+        "date": "s78",
+        "is_off_day": false,
+        "name": "s7a"
+      }
+    }
+  }
+}
