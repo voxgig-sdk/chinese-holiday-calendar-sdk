@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/chinese-holiday-calendar-sdk"
+	sdk "github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

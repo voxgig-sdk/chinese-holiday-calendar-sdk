@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/chinese-holiday-calendar-sdk/core"
+	"github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go/utility/struct"
 )
 
 type HolidayEntity struct {

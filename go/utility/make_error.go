@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/chinese-holiday-calendar-sdk/core"
+import "github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go/core"
 
 func makeErrorUtil(ctx *core.Context, err error) (any, error) {
 	if ctx == nil {

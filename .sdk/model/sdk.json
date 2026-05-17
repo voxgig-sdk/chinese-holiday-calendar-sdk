@@ -183,6 +183,9 @@
             },
             "rb": {
               "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
             }
           }
         }
@@ -222,6 +225,33 @@
         }
       },
       "target": {
+        "go-cli": {
+          "title": "Go CLI",
+          "ext": "go",
+          "comment": {
+            "line": "//"
+          },
+          "module": {
+            "name": "chinese-holiday-calendar"
+          },
+          "phase": {
+            "entity": {
+              "active": false
+            },
+            "feature": {
+              "active": false
+            },
+            "readme": {
+              "active": false
+            },
+            "test": {
+              "active": false
+            }
+          },
+          "deps": {},
+          "name": "go-cli",
+          "active": true
+        },
         "ts": {
           "title": "TypeScript",
           "ext": "ts",
@@ -262,14 +292,7 @@
             "name": "chinese-holiday-calendar"
           },
           "srcfeature": false,
-          "deps": {
-            "github.com/voxgig/struct": {
-              "active": true,
-              "version": "v0.0.0",
-              "replace": "./utility/struct",
-              "kind": "prod"
-            }
-          },
+          "deps": {},
           "name": "go",
           "active": true
         },
@@ -357,15 +380,6 @@
     },
     "def": {
       "desc": ""
-    },
-    "api": {
-      "guide": {},
-      "entity": {}
     }
-  },
-  "name__orig": "chinese-holiday-calendar",
-  "Name": "ChineseHolidayCalendar",
-  "name_": "chinese_holiday_calendar",
-  "name-": "chinese-holiday-calendar",
-  "NAME": "CHINESE-HOLIDAY-CALENDAR"
+  }
 }

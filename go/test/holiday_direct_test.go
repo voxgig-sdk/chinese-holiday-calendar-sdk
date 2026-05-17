@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/chinese-holiday-calendar-sdk"
-	"github.com/voxgig-sdk/chinese-holiday-calendar-sdk/core"
+	sdk "github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go"
+	"github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go/core"
 )
 
 func TestHolidayDirect(t *testing.T) {

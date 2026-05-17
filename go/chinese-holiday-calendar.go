@@ -1,10 +1,10 @@
 package voxgigchineseholidaycalendarsdk
 
 import (
-	"github.com/voxgig-sdk/chinese-holiday-calendar-sdk/core"
-	"github.com/voxgig-sdk/chinese-holiday-calendar-sdk/entity"
-	"github.com/voxgig-sdk/chinese-holiday-calendar-sdk/feature"
-	_ "github.com/voxgig-sdk/chinese-holiday-calendar-sdk/utility"
+	"github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go/core"
+	"github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go/entity"
+	"github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go/feature"
+	_ "github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

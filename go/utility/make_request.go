@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/chinese-holiday-calendar-sdk/core"
+import "github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go/core"
 
 func makeRequestUtil(ctx *core.Context) (*core.Response, error) {
 	if ctx.Out["request"] != nil {

@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/chinese-holiday-calendar-sdk/core"
+import "github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go/core"
 
 func featureAddUtil(ctx *core.Context, f core.Feature) {
 	client := ctx.Client

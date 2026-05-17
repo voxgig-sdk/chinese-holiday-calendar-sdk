@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/chinese-holiday-calendar-sdk/core"
+	"github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go/core"
 )
 
 type LogFeature struct {
