@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { ChineseHolidayCalendarSDK } from 'chinese-holiday-calendar'
 
-const client = new ChineseHolidayCalendarSDK({
-  apikey: process.env.CHINESE-HOLIDAY-CALENDAR_APIKEY,
-})
+const client = new ChineseHolidayCalendarSDK({})
 ```
 
 ### 3. Load a holiday
@@ -82,7 +80,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ChineseHolidayCalendarSDK({ apikey: '...' })
+const client = new ChineseHolidayCalendarSDK()
 const testClient = client.tester()
 ```
 
@@ -118,7 +116,6 @@ const logger = {
 }
 
 const client = new ChineseHolidayCalendarSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -129,7 +126,6 @@ Create a `.env.local` file at the project root:
 
 ```
 CHINESE-HOLIDAY-CALENDAR_TEST_LIVE=TRUE
-CHINESE-HOLIDAY-CALENDAR_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,7 +143,6 @@ cd ts && npm test
 
 ```ts
 new ChineseHolidayCalendarSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -158,7 +153,6 @@ new ChineseHolidayCalendarSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

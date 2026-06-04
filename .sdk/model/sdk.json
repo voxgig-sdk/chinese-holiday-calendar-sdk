@@ -16,7 +16,15 @@
           }
         ],
         "title": "Chinese Holiday Calendar",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Look up China's public holidays and statutory off-days by year",
+        "homepage": "https://api.jiejiariapi.com/v1",
+        "docs_url": "https://freepublicapis.com/chinese-holiday-calendar",
+        "about_md": "The Chinese Holiday Calendar API exposes public holiday data for China, served from `https://api.jiejiariapi.com/v1`. It is catalogued on [Free Public APIs](https://freepublicapis.com/chinese-holiday-calendar) as a community-tracked endpoint.\n\nWhat you get from the API:\n\n- Annual listings of Chinese public holidays, queryable by year (for example, `GET /holidays/2024`).\n- Holiday names, dates, and off-day status for each entry.\n\nThe service is HTTP-only and, per the community catalogue listing, does not document an authentication requirement. CORS is reported as disabled, so browser-side calls may need a proxy. License terms are not published; check with the provider before redistributing the data.",
+        "entity_desc": {
+          "holiday": "A Chinese public holiday entry — name, date, and off-day status — listed by year at `/holidays/{year}` (e.g. `/holidays/2024`)."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -24,7 +32,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "holiday": {

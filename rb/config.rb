@@ -15,9 +15,6 @@ module ChineseHolidayCalendarConfig
       },
       "options" => {
         "base" => "https://api.jiejiariapi.com/v1",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

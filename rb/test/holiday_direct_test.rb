@@ -69,14 +69,12 @@ def holiday_direct_setup(mockres)
   env = Runner.env_override({
     "CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID" => {},
     "CHINESEHOLIDAYCALENDAR_TEST_LIVE" => "FALSE",
-    "CHINESEHOLIDAYCALENDAR_APIKEY" => "NONE",
   })
 
   live = env["CHINESEHOLIDAYCALENDAR_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["CHINESEHOLIDAYCALENDAR_APIKEY"],
     }
     client = ChineseHolidayCalendarSDK.new(merged_opts)
     return {
