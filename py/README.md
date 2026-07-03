@@ -10,7 +10,7 @@ The Python SDK for the ChineseHolidayCalendar API — an entity-oriented client 
 
 ## Install
 ```bash
-pip install chinese-holiday-calendar-sdk
+pip install voxgig-sdk-chinese-holiday-calendar
 ```
 
 Or install from source:

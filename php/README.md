@@ -10,7 +10,7 @@ The PHP SDK for the ChineseHolidayCalendar API — an entity-oriented client usi
 
 ## Install
 ```bash
-composer require voxgig/chinese-holiday-calendar-sdk
+composer require voxgig-sdk/chinese-holiday-calendar
 ```
 
 

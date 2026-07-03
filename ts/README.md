@@ -10,7 +10,7 @@ The TypeScript SDK for the ChineseHolidayCalendar API — a type-safe, entity-or
 
 ## Install
 ```bash
-npm install chinese-holiday-calendar
+npm install @voxgig-sdk/chinese-holiday-calendar
 ```
 ## Tutorial: your first API call
 

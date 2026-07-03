@@ -10,13 +10,13 @@ The Ruby SDK for the ChineseHolidayCalendar API — an entity-oriented client us
 
 ## Install
 ```bash
-gem install chinese-holiday-calendar-sdk
+gem install voxgig-sdk-chinese-holiday-calendar
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "chinese-holiday-calendar-sdk"
+gem "voxgig-sdk-chinese-holiday-calendar"
 ```
 
 Then run:

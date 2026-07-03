@@ -8,12 +8,14 @@ source = {
   dir = "chinese-holiday-calendar-sdk/lua"
 }
 description = {
-  summary = "ChineseHolidayCalendar SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Chinese Holiday Calendar public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk",
+  issues_url = "https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "chinese-holiday-calendar" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

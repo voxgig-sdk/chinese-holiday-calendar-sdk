@@ -10,7 +10,7 @@ The Lua SDK for the ChineseHolidayCalendar API — an entity-oriented client usi
 
 ## Install
 ```bash
-luarocks install chinese-holiday-calendar-sdk
+luarocks install voxgig-sdk-chinese-holiday-calendar
 ```
 
 If the module is not yet published, add the source directory to
