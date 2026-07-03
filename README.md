@@ -1,19 +1,8 @@
 # ChineseHolidayCalendar SDK
 
-Look up China's public holidays and statutory off-days by year
+Chinese Holiday Calendar client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Chinese Holiday Calendar
-
-The Chinese Holiday Calendar API exposes public holiday data for China, served from `https://api.jiejiariapi.com/v1`. It is catalogued on [Free Public APIs](https://freepublicapis.com/chinese-holiday-calendar) as a community-tracked endpoint.
-
-What you get from the API:
-
-- Annual listings of Chinese public holidays, queryable by year (for example, `GET /holidays/2024`).
-- Holiday names, dates, and off-day status for each entry.
-
-The service is HTTP-only and, per the community catalogue listing, does not document an authentication requirement. CORS is reported as disabled, so browser-side calls may need a proxy. License terms are not published; check with the provider before redistributing the data.
 
 ## Try it
 
@@ -47,27 +36,31 @@ gem install chinese-holiday-calendar-sdk
 luarocks install chinese-holiday-calendar-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ChineseHolidayCalendarSDK } from 'chinese-holiday-calendar'
 
-const client = new ChineseHolidayCalendarSDK({})
+const client = new ChineseHolidayCalendarSDK({
+  apikey: process.env.CHINESE-HOLIDAY-CALENDAR_APIKEY,
+})
 
+// Load holiday data
+const holiday = await client.Holiday().load({})
+console.log(holiday.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -97,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Holiday** | A Chinese public holiday entry — name, date, and off-day status — listed by year at `/holidays/{year}` (e.g. `/holidays/2024`). | `/holidays/{year}` |
+| **Holiday** |  | `/holidays/{year}` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -107,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from chineseholidaycalendar_sdk import ChineseHolidayCalendarSDK
 
-client = ChineseHolidayCalendarSDK({})
+client = ChineseHolidayCalendarSDK({
+    "apikey": os.environ.get("CHINESE-HOLIDAY-CALENDAR_APIKEY"),
+})
 
 
 # Load a specific holiday
-holiday, err = client.Holiday(None).load(
-    {"id": "example_id"}, None
-)
+holiday, err = client.Holiday().load({"id": "example_id"})
+print(holiday)
 ```
 
 ### PHP
@@ -124,13 +119,14 @@ holiday, err = client.Holiday(None).load(
 <?php
 require_once 'chineseholidaycalendar_sdk.php';
 
-$client = new ChineseHolidayCalendarSDK([]);
+$client = new ChineseHolidayCalendarSDK([
+    "apikey" => getenv("CHINESE-HOLIDAY-CALENDAR_APIKEY"),
+]);
 
 
 // Load a specific holiday
-[$holiday, $err] = $client->Holiday(null)->load(
-    ["id" => "example_id"], null
-);
+[$holiday, $err] = $client->Holiday()->load(["id" => "example_id"]);
+print_r($holiday);
 ```
 
 ### Golang
@@ -138,8 +134,13 @@ $client = new ChineseHolidayCalendarSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go"
 
-client := sdk.NewChineseHolidayCalendarSDK(map[string]any{})
+client := sdk.NewChineseHolidayCalendarSDK(map[string]any{
+    "apikey": os.Getenv("CHINESE-HOLIDAY-CALENDAR_APIKEY"),
+})
 
+// Load holiday data
+holiday, err := client.Holiday(nil).Load(map[string]any{}, nil)
+fmt.Println(holiday)
 ```
 
 ### Ruby
@@ -147,13 +148,14 @@ client := sdk.NewChineseHolidayCalendarSDK(map[string]any{})
 ```ruby
 require_relative "ChineseHolidayCalendar_sdk"
 
-client = ChineseHolidayCalendarSDK.new({})
+client = ChineseHolidayCalendarSDK.new({
+  "apikey" => ENV["CHINESE-HOLIDAY-CALENDAR_APIKEY"],
+})
 
 
 # Load a specific holiday
-holiday, err = client.Holiday(nil).load(
-  { "id" => "example_id" }, nil
-)
+holiday, err = client.Holiday().load({ "id" => "example_id" })
+puts holiday
 ```
 
 ### Lua
@@ -161,13 +163,14 @@ holiday, err = client.Holiday(nil).load(
 ```lua
 local sdk = require("chinese-holiday-calendar_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("CHINESE-HOLIDAY-CALENDAR_APIKEY"),
+})
 
 
 -- Load a specific holiday
-local holiday, err = client:Holiday(nil):load(
-  { id = "example_id" }, nil
-)
+local holiday, err = client:Holiday():load({ id = "example_id" })
+print(holiday)
 ```
 
 ## Unit testing in offline mode
@@ -186,25 +189,21 @@ const result = await client.Holiday().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ChineseHolidayCalendarSDK.test(None, None)
-result, err = client.Holiday(None).load(
-    {"id": "test01"}, None
-)
+client = ChineseHolidayCalendarSDK.test()
+result, err = client.Holiday().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ChineseHolidayCalendarSDK::test(null, null);
-[$result, $err] = $client->Holiday(null)->load(
-    ["id" => "test01"], null
-);
+$client = ChineseHolidayCalendarSDK::test();
+[$result, $err] = $client->Holiday()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Holiday(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -213,19 +212,15 @@ result, err := client.Holiday(nil).Load(
 ### Ruby
 
 ```ruby
-client = ChineseHolidayCalendarSDK.test(nil, nil)
-result, err = client.Holiday(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ChineseHolidayCalendarSDK.test
+result, err = client.Holiday().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Holiday(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Holiday():load({ id = "test01" })
 ```
 
 ## How it works
@@ -329,11 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Chinese Holiday Calendar
-
-- Upstream: [https://api.jiejiariapi.com/v1](https://api.jiejiariapi.com/v1)
-- API docs: [https://freepublicapis.com/chinese-holiday-calendar](https://freepublicapis.com/chinese-holiday-calendar)
 
 ---
 

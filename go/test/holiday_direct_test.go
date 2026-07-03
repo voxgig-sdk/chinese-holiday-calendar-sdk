@@ -110,12 +110,14 @@ func holidayDirectSetup(mockres any) *holidayDirectSetupResult {
 	env := envOverride(map[string]any{
 		"CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID": map[string]any{},
 		"CHINESEHOLIDAYCALENDAR_TEST_LIVE":    "FALSE",
+		"CHINESEHOLIDAYCALENDAR_APIKEY":       "NONE",
 	})
 
 	live := env["CHINESEHOLIDAYCALENDAR_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["CHINESEHOLIDAYCALENDAR_APIKEY"],
 		}
 		client := sdk.NewChineseHolidayCalendarSDK(mergedOpts)
 

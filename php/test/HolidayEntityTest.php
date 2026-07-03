@@ -85,6 +85,7 @@ function holiday_basic_setup($extra)
         "CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID" => $idmap,
         "CHINESEHOLIDAYCALENDAR_TEST_LIVE" => "FALSE",
         "CHINESEHOLIDAYCALENDAR_TEST_EXPLAIN" => "FALSE",
+        "CHINESEHOLIDAYCALENDAR_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -96,6 +97,7 @@ function holiday_basic_setup($extra)
     if ($env["CHINESEHOLIDAYCALENDAR_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["CHINESEHOLIDAYCALENDAR_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -91,6 +91,7 @@ def _holiday_basic_setup(extra):
         "CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID": idmap,
         "CHINESEHOLIDAYCALENDAR_TEST_LIVE": "FALSE",
         "CHINESEHOLIDAYCALENDAR_TEST_EXPLAIN": "FALSE",
+        "CHINESEHOLIDAYCALENDAR_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _holiday_basic_setup(extra):
     if env.get("CHINESEHOLIDAYCALENDAR_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("CHINESEHOLIDAYCALENDAR_APIKEY"),
             },
             extra or {},
         ])

@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID': {},
     'CHINESEHOLIDAYCALENDAR_TEST_LIVE': 'FALSE',
+    'CHINESEHOLIDAYCALENDAR_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.CHINESEHOLIDAYCALENDAR_TEST_LIVE
 
   if (live) {
     const client = new ChineseHolidayCalendarSDK({
+      apikey: env.CHINESEHOLIDAYCALENDAR_APIKEY,
     })
 
     let idmap: any = env['CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID']
