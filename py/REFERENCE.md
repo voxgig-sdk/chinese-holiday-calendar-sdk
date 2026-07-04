@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## HolidayEntity
 
 ```python
-holiday = client.holiday
+holiday = client.Holiday()
 ```
 
 ### Fields
@@ -98,7 +98,7 @@ holiday = client.holiday
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.holiday.load({"id": "holiday_id"})
+result = client.Holiday().load({"id": "holiday_id"})
 ```
 
 ### Common Methods

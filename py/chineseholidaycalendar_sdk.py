@@ -220,25 +220,15 @@ class ChineseHolidayCalendarSDK:
         }
 
 
-    @property
-    def holiday(self):
-        """Idiomatic facade: client.holiday.list() / client.holiday.load({"id": ...})."""
-        from entity.holiday_entity import HolidayEntity
-        cached = getattr(self, "_holiday", None)
-        if cached is None:
-            cached = HolidayEntity(self, None)
-            self._holiday = cached
-        return cached
-
-    def Holiday(self, data=None):
-        # Deprecated: use client.holiday instead.
+    def Holiday(self, data=None) -> "HolidayEntity":
+        """Entity factory: client.Holiday().list({}) / client.Holiday().load({"id": ...})."""
         from entity.holiday_entity import HolidayEntity
         return HolidayEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "ChineseHolidayCalendarSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class ChineseHolidayCalendarSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.holiday_entity import HolidayEntity

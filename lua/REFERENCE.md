@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## HolidayEntity
 
 ```lua
-local holiday = client:holiday(nil)
+local holiday = client:Holiday(nil)
 ```
 
 ### Fields
@@ -101,7 +101,7 @@ local holiday = client:holiday(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:holiday():load({ id = "holiday_id" })
+local result, err = client:Holiday():load({ id = "holiday_id" })
 ```
 
 ### Common Methods

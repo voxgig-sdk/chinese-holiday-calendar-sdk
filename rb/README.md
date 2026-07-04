@@ -32,8 +32,9 @@ client = ChineseHolidayCalendarSDK.new
 
 ```ruby
 begin
-  result = client.holiday.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Holiday record (raises on error).
+  holiday = client.Holiday.load({ "id" => "example_id" })
+  puts holiday
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = ChineseHolidayCalendarSDK.test
+client = ChineseHolidayCalendarSDK.test({
+  "entity" => { "holiday" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.holiday.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+holiday = client.Holiday.load({ "id" => "test01" })
+puts holiday
 ```
 
 ### Use a custom fetch function
@@ -220,7 +225,7 @@ API path: `/holidays/{year}`
 
 ### Holiday
 
-Create an instance: `const holiday = client.holiday`
+Create an instance: `holiday = client.Holiday`
 
 #### Operations
 
@@ -238,8 +243,9 @@ Create an instance: `const holiday = client.holiday`
 
 #### Example: Load
 
-```ts
-const holiday = await client.holiday.load({ id: 'holiday_id' })
+```ruby
+# load returns the bare Holiday record (raises on error).
+holiday = client.Holiday.load({ "id" => "holiday_id" })
 ```
 
 
@@ -314,7 +320,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-holiday = client.holiday
+holiday = client.Holiday
 holiday.load({ "id" => "example_id" })
 
 # holiday.data_get now returns the loaded holiday data

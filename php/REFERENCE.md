@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## HolidayEntity
 
 ```php
-$holiday = $client->holiday();
+$holiday = $client->Holiday();
 ```
 
 ### Fields
@@ -103,7 +103,7 @@ $holiday = $client->holiday();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->holiday()->load(["id" => "holiday_id"]);
+$result = $client->Holiday()->load(["id" => "holiday_id"]);
 ```
 
 ### Common Methods

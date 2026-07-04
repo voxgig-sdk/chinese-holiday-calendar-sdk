@@ -26,9 +26,9 @@ import { ChineseHolidayCalendarSDK } from '@voxgig-sdk/chinese-holiday-calendar'
 
 const client = new ChineseHolidayCalendarSDK()
 
-// Load holiday data
-const holiday = await client.holiday.load({})
-console.log(holiday.data)
+// Load holiday data (returns a Holiday)
+const holiday = await client.Holiday().load()
+console.log(holiday)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from chineseholidaycalendar_sdk import ChineseHolidayCalendarSDK
 client = ChineseHolidayCalendarSDK()
 
 
-# Load a specific holiday
-holiday = client.holiday.load({"id": "example_id"})
+# Load a specific holiday (returns the record, raises on error)
+holiday = client.Holiday().load({"id": "example_id"})
 print(holiday)
 ```
 
@@ -98,8 +98,8 @@ require_once 'chineseholidaycalendar_sdk.php';
 $client = new ChineseHolidayCalendarSDK();
 
 
-// Load a specific holiday
-$holiday = $client->holiday()->load(["id" => "example_id"]);
+// Load a specific holiday (returns the bare record; throws on error)
+$holiday = $client->Holiday()->load(["id" => "example_id"]);
 print_r($holiday);
 ```
 
@@ -123,8 +123,8 @@ require_relative "ChineseHolidayCalendar_sdk"
 client = ChineseHolidayCalendarSDK.new
 
 
-# Load a specific holiday
-holiday = client.holiday.load({ "id" => "example_id" })
+# Load a specific holiday (returns the bare record; raises on error)
+holiday = client.Holiday.load({ "id" => "example_id" })
 puts holiday
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific holiday
-local holiday, err = client:holiday():load({ id = "example_id" })
+local holiday, err = client:Holiday():load({ id = "example_id" })
 print(holiday)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ChineseHolidayCalendarSDK.test()
-const result = await client.holiday.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const holiday = await client.Holiday().load({ id: 'test01' })
+// holiday is a bare Holiday populated with mock data
+console.log(holiday)
 ```
 
 ### Python
 
 ```python
 client = ChineseHolidayCalendarSDK.test()
-result = client.holiday.load({"id": "test01"})
+holiday = client.Holiday().load({"id": "test01"})
+print(holiday)
 ```
 
 ### PHP
 
 ```php
-$client = ChineseHolidayCalendarSDK::test();
-$result = $client->holiday()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ChineseHolidayCalendarSDK::test([
+    "entity" => ["holiday" => ["test01" => ["id" => "test01"]]],
+]);
+$holiday = $client->Holiday()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.Holiday(nil).Load(
 ### Ruby
 
 ```ruby
-client = ChineseHolidayCalendarSDK.test
-result = client.holiday.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ChineseHolidayCalendarSDK.test({
+  "entity" => { "holiday" => { "test01" => { "id" => "test01" } } },
+})
+holiday = client.Holiday.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:holiday():load({ id = "test01" })
+local result, err = client:Holiday():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -233,10 +233,10 @@ class ChineseHolidayCalendarSDK
 
     private $_holiday = null;
 
-    // Idiomatic facade: $client->holiday()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Holiday() (PHP method
-    // names are case-insensitive).
-    public function holiday($data = null)
+    // Canonical facade: $client->Holiday()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->holiday()
+    // resolves here too.
+    public function Holiday($data = null)
     {
         require_once __DIR__ . '/entity/holiday_entity.php';
         if ($data === null) {

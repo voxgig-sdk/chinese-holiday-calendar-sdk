@@ -204,14 +204,7 @@ class ChineseHolidayCalendarSDK {
 
 
 
-  _holiday?: HolidayEntity
-
-  // Idiomatic facade: `client.holiday.list()` / `client.holiday.load({ id })`.
-  get holiday(): HolidayEntity {
-    return (this._holiday ??= new HolidayEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.holiday` instead. */
+  // Entity access: `client.Holiday().list()` / `client.Holiday().load({ id })`.
   Holiday(data?: any) {
     const self = this
     return new HolidayEntity(self,data)

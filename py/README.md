@@ -33,10 +33,12 @@ client = ChineseHolidayCalendarSDK()
 
 ### 3. Load a holiday
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.holiday.load({"id": "example_id"})
-    print(result)
+    holiday = client.Holiday().load({"id": "example_id"})
+    print(holiday)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ChineseHolidayCalendarSDK.test()
 
-result = client.holiday.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+holiday = client.Holiday().load({"id": "test01"})
+# holiday contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -220,7 +223,7 @@ API path: `/holidays/{year}`
 
 ### Holiday
 
-Create an instance: `const holiday = client.holiday`
+Create an instance: `holiday = client.Holiday()`
 
 #### Operations
 
@@ -238,8 +241,8 @@ Create an instance: `const holiday = client.holiday`
 
 #### Example: Load
 
-```ts
-const holiday = await client.holiday.load({ id: 'holiday_id' })
+```python
+holiday = client.Holiday().load({"id": "holiday_id"})
 ```
 
 
@@ -313,7 +316,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-holiday = client.holiday
+holiday = client.Holiday()
 holiday.load({"id": "example_id"})
 
 # holiday.data_get() now returns the loaded holiday data

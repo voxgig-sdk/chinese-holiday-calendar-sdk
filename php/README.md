@@ -33,9 +33,10 @@ $client = new ChineseHolidayCalendarSDK();
 
 ```php
 try {
-    $result = $client->holiday()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Holiday record (throws on error).
+    $holiday = $client->Holiday()->load(["id" => "example_id"]);
+    print_r($holiday);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = ChineseHolidayCalendarSDK::test();
+$client = ChineseHolidayCalendarSDK::test([
+    "entity" => ["holiday" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->holiday()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$holiday = $client->Holiday()->load(["id" => "test01"]);
+print_r($holiday);
 ```
 
 ### Use a custom fetch function
@@ -225,7 +230,7 @@ API path: `/holidays/{year}`
 
 ### Holiday
 
-Create an instance: `const holiday = client.holiday`
+Create an instance: `$holiday = $client->Holiday();`
 
 #### Operations
 
@@ -243,8 +248,9 @@ Create an instance: `const holiday = client.holiday`
 
 #### Example: Load
 
-```ts
-const holiday = await client.holiday.load({ id: 'holiday_id' })
+```php
+// load() returns the bare Holiday record (throws on error).
+$holiday = $client->Holiday()->load(["id" => "holiday_id"]);
 ```
 
 
@@ -319,7 +325,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$holiday = $client->holiday();
+$holiday = $client->Holiday();
 $holiday->load(["id" => "example_id"]);
 
 // $holiday->dataGet() now returns the loaded holiday data

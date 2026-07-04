@@ -109,7 +109,7 @@ Alias for `ChineseHolidayCalendarSDK.test()`.
 ## HolidayEntity
 
 ```ts
-const holiday = client.holiday
+const holiday = client.Holiday()
 ```
 
 ### Fields
@@ -127,7 +127,7 @@ const holiday = client.holiday
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.holiday.load({ id: 'holiday_id' })
+const result = await client.Holiday().load({ id: 'holiday_id' })
 ```
 
 ### Common Methods

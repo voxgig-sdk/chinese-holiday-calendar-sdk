@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:holiday():list() / client:holiday():load({ id = ... })
-function ChineseHolidayCalendarSDK:holiday(data)
+-- Idiomatic facade: client:Holiday():list() / client:Holiday():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ChineseHolidayCalendarSDK:Holiday(data)
   local EntityMod = require("entity.holiday_entity")
   if data == nil then
     if self._holiday == nil then
@@ -253,12 +254,6 @@ function ChineseHolidayCalendarSDK:holiday(data)
     end
     return self._holiday
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:holiday() instead.
-function ChineseHolidayCalendarSDK:Holiday(data)
-  local EntityMod = require("entity.holiday_entity")
   return EntityMod.new(self, data)
 end
 

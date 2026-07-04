@@ -208,13 +208,7 @@ class ChineseHolidayCalendarSDK
   end
 
 
-  # Idiomatic facade: client.holiday.list / client.holiday.load({ "id" => ... })
-  def holiday
-    require_relative 'entity/holiday_entity'
-    @holiday ||= HolidayEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.holiday instead.
+  # Canonical facade: client.Holiday.list / client.Holiday.load({ "id" => ... })
   def Holiday(data = nil)
     require_relative 'entity/holiday_entity'
     HolidayEntity.new(self, data)

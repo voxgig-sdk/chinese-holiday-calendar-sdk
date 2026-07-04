@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## HolidayEntity
 
 ```ruby
-holiday = client.holiday
+holiday = client.Holiday
 ```
 
 ### Fields
@@ -104,7 +104,7 @@ holiday = client.holiday
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.holiday.load({ "id" => "holiday_id" })
+result = client.Holiday.load({ "id" => "holiday_id" })
 ```
 
 ### Common Methods
