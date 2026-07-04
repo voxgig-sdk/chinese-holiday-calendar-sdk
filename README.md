@@ -10,26 +10,24 @@ This is an unofficial SDK for the Chinese Holiday Calendar public API, generated
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/chinese-holiday-calendar` | `npm install @voxgig-sdk/chinese-holiday-calendar` |
-| Python | `voxgig-sdk-chinese-holiday-calendar` | `pip install voxgig-sdk-chinese-holiday-calendar` |
-| PHP | `voxgig-sdk/chinese-holiday-calendar` | `composer require voxgig-sdk/chinese-holiday-calendar` |
-| Golang | `github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go` | `go get github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go` |
-| Ruby | `voxgig-sdk-chinese-holiday-calendar` | `gem install voxgig-sdk-chinese-holiday-calendar` |
-| Lua | `voxgig-sdk-chinese-holiday-calendar` | `luarocks install voxgig-sdk-chinese-holiday-calendar` |
+| TypeScript | `@voxgig-sdk/chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases) |
+| Python | `voxgig-sdk-chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases) |
+| PHP | `voxgig-sdk/chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases) |
+| Golang | `github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go` | `go get github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go@latest` |
+| Ruby | `voxgig-sdk-chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases) |
+| Lua | `voxgig-sdk-chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { ChineseHolidayCalendarSDK } from 'chinese-holiday-calendar'
+import { ChineseHolidayCalendarSDK } from '@voxgig-sdk/chinese-holiday-calendar'
 
-const client = new ChineseHolidayCalendarSDK({
-  apikey: process.env.CHINESE-HOLIDAY-CALENDAR_APIKEY,
-})
+const client = new ChineseHolidayCalendarSDK()
 
 // Load holiday data
-const holiday = await client.Holiday().load({})
+const holiday = await client.holiday.load({})
 console.log(holiday.data)
 ```
 
@@ -71,7 +69,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Holiday** |  | `/holidays/{year}` |
+| **Holiday** | The Holiday entity (load). | `/holidays/{year}` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -81,16 +79,13 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
-import os
 from chineseholidaycalendar_sdk import ChineseHolidayCalendarSDK
 
-client = ChineseHolidayCalendarSDK({
-    "apikey": os.environ.get("CHINESE-HOLIDAY-CALENDAR_APIKEY"),
-})
+client = ChineseHolidayCalendarSDK()
 
 
 # Load a specific holiday
-holiday, err = client.Holiday().load({"id": "example_id"})
+holiday = client.holiday.load({"id": "example_id"})
 print(holiday)
 ```
 
@@ -100,13 +95,11 @@ print(holiday)
 <?php
 require_once 'chineseholidaycalendar_sdk.php';
 
-$client = new ChineseHolidayCalendarSDK([
-    "apikey" => getenv("CHINESE-HOLIDAY-CALENDAR_APIKEY"),
-]);
+$client = new ChineseHolidayCalendarSDK();
 
 
 // Load a specific holiday
-[$holiday, $err] = $client->Holiday()->load(["id" => "example_id"]);
+$holiday = $client->holiday()->load(["id" => "example_id"]);
 print_r($holiday);
 ```
 
@@ -115,9 +108,7 @@ print_r($holiday);
 ```go
 import sdk "github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go"
 
-client := sdk.NewChineseHolidayCalendarSDK(map[string]any{
-    "apikey": os.Getenv("CHINESE-HOLIDAY-CALENDAR_APIKEY"),
-})
+client := sdk.New()
 
 // Load holiday data
 holiday, err := client.Holiday(nil).Load(map[string]any{}, nil)
@@ -129,13 +120,11 @@ fmt.Println(holiday)
 ```ruby
 require_relative "ChineseHolidayCalendar_sdk"
 
-client = ChineseHolidayCalendarSDK.new({
-  "apikey" => ENV["CHINESE-HOLIDAY-CALENDAR_APIKEY"],
-})
+client = ChineseHolidayCalendarSDK.new
 
 
 # Load a specific holiday
-holiday, err = client.Holiday().load({ "id" => "example_id" })
+holiday = client.holiday.load({ "id" => "example_id" })
 puts holiday
 ```
 
@@ -144,13 +133,11 @@ puts holiday
 ```lua
 local sdk = require("chinese-holiday-calendar_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("CHINESE-HOLIDAY-CALENDAR_APIKEY"),
-})
+local client = sdk.new()
 
 
 -- Load a specific holiday
-local holiday, err = client:Holiday():load({ id = "example_id" })
+local holiday, err = client:holiday():load({ id = "example_id" })
 print(holiday)
 ```
 
@@ -163,7 +150,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ChineseHolidayCalendarSDK.test()
-const result = await client.Holiday().load({ id: 'test01' })
+const result = await client.holiday.load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 
@@ -171,14 +158,14 @@ const result = await client.Holiday().load({ id: 'test01' })
 
 ```python
 client = ChineseHolidayCalendarSDK.test()
-result, err = client.Holiday().load({"id": "test01"})
+result = client.holiday.load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
 $client = ChineseHolidayCalendarSDK::test();
-[$result, $err] = $client->Holiday()->load(["id" => "test01"]);
+$result = $client->holiday()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -194,14 +181,14 @@ result, err := client.Holiday(nil).Load(
 
 ```ruby
 client = ChineseHolidayCalendarSDK.test
-result, err = client.Holiday().load({ "id" => "test01" })
+result = client.holiday.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Holiday():load({ id = "test01" })
+local result, err = client:holiday():load({ id = "test01" })
 ```
 
 ## How it works
@@ -254,7 +241,7 @@ console.log(result.data)
 
 **Python:**
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
@@ -263,7 +250,7 @@ result, err = client.direct({
 
 **PHP:**
 ```php
-[$result, $err] = $client->direct([
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
@@ -281,7 +268,7 @@ result, err := client.Direct(map[string]any{
 
 **Ruby:**
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },

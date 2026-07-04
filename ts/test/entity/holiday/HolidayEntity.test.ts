@@ -111,7 +111,6 @@ function basicSetup(extra?: any) {
     'CHINESE_HOLIDAY_CALENDAR_TEST_HOLIDAY_ENTID': idmap,
     'CHINESE_HOLIDAY_CALENDAR_TEST_LIVE': 'FALSE',
     'CHINESE_HOLIDAY_CALENDAR_TEST_EXPLAIN': 'FALSE',
-    'CHINESE_HOLIDAY_CALENDAR_APIKEY': 'NONE',
   })
 
   idmap = env['CHINESE_HOLIDAY_CALENDAR_TEST_HOLIDAY_ENTID']
@@ -121,7 +120,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ChineseHolidayCalendarSDK(merge([
       {
-        apikey: env.CHINESE_HOLIDAY_CALENDAR_APIKEY,
       },
       extra
     ]))

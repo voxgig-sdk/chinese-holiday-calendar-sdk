@@ -245,6 +245,9 @@ func (sdk *ChineseHolidayCalendarSDK) Direct(fetchargs map[string]any) (map[stri
 }
 
 
+// Holiday returns a Holiday entity bound to this client.
+// Idiomatic usage: client.Holiday(nil).List(nil, nil) or
+// client.Holiday(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ChineseHolidayCalendarSDK) Holiday(data map[string]any) ChineseHolidayCalendarEntity {
 	return NewHolidayEntityFunc(sdk, data)
 }

@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://api.jiejiariapi.com/v1',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -97,7 +93,8 @@ class Config {
                     "name": "id",
                     "orig": "year",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },

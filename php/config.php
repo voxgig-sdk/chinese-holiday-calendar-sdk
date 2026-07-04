@@ -20,9 +20,6 @@ class ChineseHolidayCalendarConfig
             ],
             "options" => [
                 "base" => "https://api.jiejiariapi.com/v1",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -73,6 +70,7 @@ class ChineseHolidayCalendarConfig
                         'orig' => 'year',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
+                        'index$' => 0,
                       ],
                     ],
                   ],

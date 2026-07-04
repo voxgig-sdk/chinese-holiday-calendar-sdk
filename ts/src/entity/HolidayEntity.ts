@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Holiday,
+  HolidayLoadMatch,
+} from '../ChineseHolidayCalendarTypes'
 
 // TODO: needs Entity superclass
-class HolidayEntity extends ChineseHolidayCalendarEntityBase {
+class HolidayEntity extends ChineseHolidayCalendarEntityBase<Holiday> {
 
   constructor(client: ChineseHolidayCalendarSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class HolidayEntity extends ChineseHolidayCalendarEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: HolidayLoadMatch, ctrl?: Control): Promise<Holiday> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class HolidayEntity extends ChineseHolidayCalendarEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Holiday> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -49,8 +49,7 @@ class TestHolidayEntity:
         # LOAD
         holiday_ref01_ent = client.Holiday(None)
         holiday_ref01_match_dt0 = {}
-        holiday_ref01_data_dt0_loaded, err = holiday_ref01_ent.load(holiday_ref01_match_dt0, None)
-        assert err is None
+        holiday_ref01_data_dt0_loaded = holiday_ref01_ent.load(holiday_ref01_match_dt0, None)
         assert holiday_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _holiday_basic_setup(extra):
         "CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID": idmap,
         "CHINESEHOLIDAYCALENDAR_TEST_LIVE": "FALSE",
         "CHINESEHOLIDAYCALENDAR_TEST_EXPLAIN": "FALSE",
-        "CHINESEHOLIDAYCALENDAR_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _holiday_basic_setup(extra):
     if env.get("CHINESEHOLIDAYCALENDAR_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("CHINESEHOLIDAYCALENDAR_APIKEY"),
             },
             extra or {},
         ])

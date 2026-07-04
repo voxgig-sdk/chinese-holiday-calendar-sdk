@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://api.jiejiariapi.com/v1",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -68,6 +65,7 @@ def make_config():
                       "orig": "year",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                   ],
                 },

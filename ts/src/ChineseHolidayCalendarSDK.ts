@@ -2,6 +2,8 @@
 
 import { HolidayEntity } from './entity/HolidayEntity'
 
+export type * from './ChineseHolidayCalendarTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class ChineseHolidayCalendarSDK {
 
 
 
+  _holiday?: HolidayEntity
+
+  // Idiomatic facade: `client.holiday.list()` / `client.holiday.load({ id })`.
+  get holiday(): HolidayEntity {
+    return (this._holiday ??= new HolidayEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.holiday` instead. */
   Holiday(data?: any) {
     const self = this
     return new HolidayEntity(self,data)

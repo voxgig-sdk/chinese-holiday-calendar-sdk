@@ -117,7 +117,6 @@ func holidayBasicSetup(extra map[string]any) *entityTestSetup {
 		"CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID": idmap,
 		"CHINESEHOLIDAYCALENDAR_TEST_LIVE":      "FALSE",
 		"CHINESEHOLIDAYCALENDAR_TEST_EXPLAIN":   "FALSE",
-		"CHINESEHOLIDAYCALENDAR_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID"])
@@ -128,7 +127,6 @@ func holidayBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["CHINESEHOLIDAYCALENDAR_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["CHINESEHOLIDAYCALENDAR_APIKEY"],
 			},
 			extra,
 		})

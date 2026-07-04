@@ -42,8 +42,7 @@ class HolidayEntityTest < Minitest::Test
     # LOAD
     holiday_ref01_ent = client.Holiday(nil)
     holiday_ref01_match_dt0 = {}
-    holiday_ref01_data_dt0_loaded, err = holiday_ref01_ent.load(holiday_ref01_match_dt0, nil)
-    assert_nil err
+    holiday_ref01_data_dt0_loaded = holiday_ref01_ent.load(holiday_ref01_match_dt0, nil)
     assert !holiday_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def holiday_basic_setup(extra)
     "CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID" => idmap,
     "CHINESEHOLIDAYCALENDAR_TEST_LIVE" => "FALSE",
     "CHINESEHOLIDAYCALENDAR_TEST_EXPLAIN" => "FALSE",
-    "CHINESEHOLIDAYCALENDAR_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def holiday_basic_setup(extra)
   if env["CHINESEHOLIDAYCALENDAR_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["CHINESEHOLIDAYCALENDAR_APIKEY"],
       },
       extra || {},
     ])
