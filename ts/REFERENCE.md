@@ -116,9 +116,9 @@ const holiday = client.Holiday()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | Yes |  |
-| `is_off_day` | ``$BOOLEAN`` | Yes |  |
-| `name` | ``$STRING`` | Yes |  |
+| `date` | `string` | Yes |  |
+| `is_off_day` | `boolean` | Yes |  |
+| `name` | `string` | Yes |  |
 
 ### Operations
 
@@ -127,7 +127,7 @@ const holiday = client.Holiday()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Holiday().load({ id: 'holiday_id' })
+const result = await client.Holiday().load({ id: 1 })
 ```
 
 ### Common Methods

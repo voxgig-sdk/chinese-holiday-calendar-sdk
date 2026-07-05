@@ -8,7 +8,7 @@ Complete API reference for the ChineseHolidayCalendar PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/chinese-holiday-calendar_sdk.php';
+require_once __DIR__ . '/chineseholidaycalendar_sdk.php';
 
 $client = new ChineseHolidayCalendarSDK($options);
 ```
@@ -45,11 +45,11 @@ $client = ChineseHolidayCalendarSDK::test();
 
 Create a new `HolidayEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): ChineseHolidayCalendarUtility`
 
 Return a copy of the SDK utility object.
 
@@ -92,9 +92,9 @@ $holiday = $client->Holiday();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | Yes |  |
-| `is_off_day` | ``$BOOLEAN`` | Yes |  |
-| `name` | ``$STRING`` | Yes |  |
+| `date` | `string` | Yes |  |
+| `is_off_day` | `bool` | Yes |  |
+| `name` | `string` | Yes |  |
 
 ### Operations
 
@@ -108,19 +108,19 @@ $result = $client->Holiday()->load(["id" => "holiday_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -129,7 +129,7 @@ Set the entity match criteria.
 Create a new `HolidayEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

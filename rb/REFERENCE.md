@@ -8,7 +8,7 @@ Complete API reference for the ChineseHolidayCalendar Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'chinese-holiday-calendar_sdk'
+require_relative 'ChineseHolidayCalendar_sdk'
 
 client = ChineseHolidayCalendarSDK.new(options)
 ```
@@ -93,9 +93,9 @@ holiday = client.Holiday
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | Yes |  |
-| `is_off_day` | ``$BOOLEAN`` | Yes |  |
-| `name` | ``$STRING`` | Yes |  |
+| `date` | `String` | Yes |  |
+| `is_off_day` | `Boolean` | Yes |  |
+| `name` | `String` | Yes |  |
 
 ### Operations
 

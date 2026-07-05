@@ -221,7 +221,7 @@ class ChineseHolidayCalendarSDK:
 
 
     def Holiday(self, data=None) -> "HolidayEntity":
-        """Entity factory: client.Holiday().list({}) / client.Holiday().load({"id": ...})."""
+        """Entity factory: client.Holiday().list() / client.Holiday().load({"id": ...})."""
         from entity.holiday_entity import HolidayEntity
         return HolidayEntity(self, data)
 

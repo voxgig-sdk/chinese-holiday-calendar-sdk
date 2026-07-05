@@ -8,7 +8,7 @@ Complete API reference for the ChineseHolidayCalendar Python SDK.
 ### Constructor
 
 ```python
-from chinese-holiday-calendar_sdk import ChineseHolidayCalendarSDK
+from chineseholidaycalendar_sdk import ChineseHolidayCalendarSDK
 
 client = ChineseHolidayCalendarSDK(options)
 ```
@@ -87,9 +87,9 @@ holiday = client.Holiday()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | Yes |  |
-| `is_off_day` | ``$BOOLEAN`` | Yes |  |
-| `name` | ``$STRING`` | Yes |  |
+| `date` | `str` | Yes |  |
+| `is_off_day` | `bool` | Yes |  |
+| `name` | `str` | Yes |  |
 
 ### Operations
 

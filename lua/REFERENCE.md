@@ -90,9 +90,9 @@ local holiday = client:Holiday(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | ``$STRING`` | Yes |  |
-| `is_off_day` | ``$BOOLEAN`` | Yes |  |
-| `name` | ``$STRING`` | Yes |  |
+| `date` | `string` | Yes |  |
+| `is_off_day` | `boolean` | Yes |  |
+| `name` | `string` | Yes |  |
 
 ### Operations
 
