@@ -36,7 +36,7 @@ $client = new ChineseHolidayCalendarSDK();
 ```php
 try {
     // load() returns the bare Holiday record (throws on error).
-    $holiday = $client->Holiday()->load(["id" => "example_id"]);
+    $holiday = $client->Holiday()->load(["id" => 1]);
     print_r($holiday);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -282,7 +282,7 @@ Create an instance: `$holiday = $client->Holiday();`
 
 ```php
 // load() returns the bare Holiday record (throws on error).
-$holiday = $client->Holiday()->load(["id" => "holiday_id"]);
+$holiday = $client->Holiday()->load(["id" => 1]);
 ```
 
 

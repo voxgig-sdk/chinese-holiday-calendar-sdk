@@ -91,6 +91,7 @@ same parameters as `Direct()`.
 
 ```go
 holiday := client.Holiday(nil)
+fmt.Println(holiday.GetName()) // "holiday"
 ```
 
 ### Fields
@@ -108,7 +109,11 @@ holiday := client.Holiday(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Holiday(nil).Load(map[string]any{"id": "holiday_id"}, nil)
+result, err := client.Holiday(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

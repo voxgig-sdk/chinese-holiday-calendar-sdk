@@ -292,7 +292,7 @@ Create an instance: `holiday := client.Holiday(nil)`
 #### Example: Load
 
 ```go
-holiday, err := client.Holiday(nil).Load(map[string]any{"id": "holiday_id"}, nil)
+holiday, err := client.Holiday(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }

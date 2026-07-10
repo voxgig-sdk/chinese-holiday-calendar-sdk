@@ -101,7 +101,7 @@ local holiday = client:Holiday(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Holiday():load({ id = "holiday_id" })
+local result, err = client:Holiday():load({ id = 1 })
 ```
 
 ### Common Methods

@@ -98,7 +98,7 @@ holiday = client.Holiday()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Holiday().load({"id": "holiday_id"})
+result = client.Holiday().load({"id": 1})
 ```
 
 ### Common Methods

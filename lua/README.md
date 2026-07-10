@@ -36,7 +36,7 @@ local client = sdk.new()
 ### 3. Load a holiday
 
 ```lua
-local holiday, err = client:Holiday():load({ id = "example_id" })
+local holiday, err = client:Holiday():load({ id = 1 })
 if err then error(err) end
 print(holiday)
 ```
@@ -259,7 +259,7 @@ Create an instance: `local holiday = client:Holiday(nil)`
 #### Example: Load
 
 ```lua
-local holiday, err = client:Holiday():load({ id = "holiday_id" })
+local holiday, err = client:Holiday():load({ id = 1 })
 ```
 
 

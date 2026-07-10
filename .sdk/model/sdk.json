@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -230,14 +227,17 @@
           "url": "https://api.jiejiariapi.com"
         },
         "description": "This API provides a comprehensive listing of public holidays in China for the year 2024. It includes the date, name of the holiday, and whether it is an off day or not.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.jiejiariapi.com/v1"
           }
         ],
+        "summary": "This API provides a comprehensive listing of public holidays in China for the year 2024.",
         "title": "Chinese Holiday Calendar",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://jiejiariapi.com"
       },
       "option": {},
       "target": {
@@ -290,6 +290,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -340,6 +343,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

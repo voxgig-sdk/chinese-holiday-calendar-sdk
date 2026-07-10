@@ -35,7 +35,7 @@ client = ChineseHolidayCalendarSDK.new
 ```ruby
 begin
   # load returns the bare Holiday record (raises on error).
-  holiday = client.Holiday.load({ "id" => "example_id" })
+  holiday = client.Holiday.load({ "id" => 1 })
   puts holiday
 rescue => err
   warn "load failed: #{err}"
@@ -272,7 +272,7 @@ Create an instance: `holiday = client.Holiday`
 
 ```ruby
 # load returns the bare Holiday record (raises on error).
-holiday = client.Holiday.load({ "id" => "holiday_id" })
+holiday = client.Holiday.load({ "id" => 1 })
 ```
 
 

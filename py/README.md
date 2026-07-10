@@ -42,7 +42,7 @@ client = ChineseHolidayCalendarSDK()
 
 ```python
 try:
-    holiday = client.Holiday().load({"id": "example_id"})
+    holiday = client.Holiday().load({"id": 1})
     print(holiday)
 except Exception as err:
     print(f"load failed: {err}")
@@ -274,7 +274,7 @@ Create an instance: `holiday = client.Holiday()`
 #### Example: Load
 
 ```python
-holiday = client.Holiday().load({"id": "holiday_id"})
+holiday = client.Holiday().load({"id": 1})
 ```
 
 
