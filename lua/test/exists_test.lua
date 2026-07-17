@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- ChineseHolidayCalendar SDK exists test
 
 local sdk = require("chinese-holiday-calendar_sdk")
 
