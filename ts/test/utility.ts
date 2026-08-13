@@ -62,8 +62,8 @@ function makeCtrl(explain: boolean) {
 // Overrides configuration values with environment variables if available
 function envOverride(m: Record<string, any>) {
   if (
-    'TRUE' === process.env.CHINESEHOLIDAYCALENDAR_TEST_LIVE ||
-    'TRUE' === process.env.CHINESEHOLIDAYCALENDAR_TEST_OVERRIDE
+    'TRUE' === process.env.CHINESE_HOLIDAY_CALENDAR_TEST_LIVE ||
+    'TRUE' === process.env.CHINESE_HOLIDAY_CALENDAR_TEST_OVERRIDE
   ) {
     Object.entries(m).map(n => {
       let envval = process.env[n[0]]
@@ -74,7 +74,7 @@ function envOverride(m: Record<string, any>) {
     })
   }
 
-  m.CHINESEHOLIDAYCALENDAR_TEST_EXPLAIN = process.env.CHINESEHOLIDAYCALENDAR_TEST_EXPLAIN || m.CHINESEHOLIDAYCALENDAR_TEST_EXPLAIN
+  m.CHINESE_HOLIDAY_CALENDAR_TEST_EXPLAIN = process.env.CHINESE_HOLIDAY_CALENDAR_TEST_EXPLAIN || m.CHINESE_HOLIDAY_CALENDAR_TEST_EXPLAIN
 
   return m
 }

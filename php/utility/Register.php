@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ ChineseHolidayCalendarUtility::setRegistrar(function (ChineseHolidayCalendarUtil
     $u->prepare_params = [ChineseHolidayCalendarPrepareParams::class, 'call'];
     $u->prepare_path = [ChineseHolidayCalendarPreparePath::class, 'call'];
     $u->prepare_query = [ChineseHolidayCalendarPrepareQuery::class, 'call'];
+    $u->graphql_body = [ChineseHolidayCalendarGraphql::class, 'body'];
+    $u->graphql_errors = [ChineseHolidayCalendarGraphql::class, 'errors'];
     $u->result_basic = [ChineseHolidayCalendarResultBasic::class, 'call'];
     $u->result_body = [ChineseHolidayCalendarResultBody::class, 'call'];
     $u->result_headers = [ChineseHolidayCalendarResultHeaders::class, 'call'];

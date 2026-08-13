@@ -68,11 +68,11 @@ function holiday_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID"] = {},
-    ["CHINESEHOLIDAYCALENDAR_TEST_LIVE"] = "FALSE",
+    ["CHINESE_HOLIDAY_CALENDAR_TEST_HOLIDAY_ENTID"] = {},
+    ["CHINESE_HOLIDAY_CALENDAR_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["CHINESEHOLIDAYCALENDAR_TEST_LIVE"] == "TRUE"
+  local live = env["CHINESE_HOLIDAY_CALENDAR_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

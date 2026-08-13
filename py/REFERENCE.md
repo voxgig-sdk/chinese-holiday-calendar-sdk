@@ -88,7 +88,7 @@ holiday = client.Holiday()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `date` | `str` | Yes |  |
-| `is_off_day` | `bool` | Yes |  |
+| `isOffDay` | `bool` | Yes |  |
 | `name` | `str` | Yes |  |
 
 ### Operations

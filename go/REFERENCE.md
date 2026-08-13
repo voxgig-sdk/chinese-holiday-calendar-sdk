@@ -99,7 +99,7 @@ fmt.Println(holiday.GetName()) // "holiday"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `date` | `string` | Yes |  |
-| `is_off_day` | `bool` | Yes |  |
+| `isOffDay` | `bool` | Yes |  |
 | `name` | `string` | Yes |  |
 
 ### Operations

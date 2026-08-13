@@ -23,8 +23,8 @@ module ChineseHolidayCalendarTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("CHINESEHOLIDAYCALENDAR_TEST_LIVE")
-    override = getenv("CHINESEHOLIDAYCALENDAR_TEST_OVERRIDE")
+    live = getenv("CHINESE_HOLIDAY_CALENDAR_TEST_LIVE")
+    override = getenv("CHINESE_HOLIDAY_CALENDAR_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module ChineseHolidayCalendarTestRunner
       end
     end
 
-    explain = getenv("CHINESEHOLIDAYCALENDAR_TEST_EXPLAIN")
-    m["CHINESEHOLIDAYCALENDAR_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("CHINESE_HOLIDAY_CALENDAR_TEST_EXPLAIN")
+    m["CHINESE_HOLIDAY_CALENDAR_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

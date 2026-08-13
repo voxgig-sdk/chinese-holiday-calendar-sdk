@@ -117,7 +117,7 @@ const holiday = client.Holiday()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `date` | `string` | Yes |  |
-| `is_off_day` | `boolean` | Yes |  |
+| `isOffDay` | `boolean` | Yes |  |
 | `name` | `string` | Yes |  |
 
 ### Operations

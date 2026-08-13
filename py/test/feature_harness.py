@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import ChineseHolidayCalendarControl
-from core.error import ChineseHolidayCalendarError
-from core.result import ChineseHolidayCalendarResult
-from core.spec import ChineseHolidayCalendarSpec
+from chineseholidaycalendar_sdk.config import make_config
+from chineseholidaycalendar_sdk.features import _make_feature
+from chineseholidaycalendar_sdk.core.control import ChineseHolidayCalendarControl
+from chineseholidaycalendar_sdk.core.error import ChineseHolidayCalendarError
+from chineseholidaycalendar_sdk.core.result import ChineseHolidayCalendarResult
+from chineseholidaycalendar_sdk.core.spec import ChineseHolidayCalendarSpec
 
 
 # True when this SDK was generated with the named feature.

@@ -33,7 +33,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "is_off_day",
+						"name": "isOffDay",
 						"req": true,
 						"type": "`$BOOLEAN`",
 						"index$": 1,
@@ -68,6 +68,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/holidays/{year}",
 								"parts": []any{
@@ -91,7 +92,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

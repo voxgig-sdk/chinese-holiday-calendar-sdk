@@ -16,11 +16,11 @@
 import pytest
 
 from chineseholidaycalendar_sdk import ChineseHolidayCalendarSDK
-from core.error import ChineseHolidayCalendarError
-from core.result import ChineseHolidayCalendarResult
-from core.response import ChineseHolidayCalendarResponse
-from core.spec import ChineseHolidayCalendarSpec
-from feature.base_feature import ChineseHolidayCalendarBaseFeature
+from chineseholidaycalendar_sdk.core.error import ChineseHolidayCalendarError
+from chineseholidaycalendar_sdk.core.result import ChineseHolidayCalendarResult
+from chineseholidaycalendar_sdk.core.response import ChineseHolidayCalendarResponse
+from chineseholidaycalendar_sdk.core.spec import ChineseHolidayCalendarSpec
+from chineseholidaycalendar_sdk.feature.base_feature import ChineseHolidayCalendarBaseFeature
 
 
 def _client():

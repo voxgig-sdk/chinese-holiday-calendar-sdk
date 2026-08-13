@@ -73,11 +73,11 @@ function holiday_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID" => [],
-        "CHINESEHOLIDAYCALENDAR_TEST_LIVE" => "FALSE",
+        "CHINESE_HOLIDAY_CALENDAR_TEST_HOLIDAY_ENTID" => [],
+        "CHINESE_HOLIDAY_CALENDAR_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["CHINESEHOLIDAYCALENDAR_TEST_LIVE"] === "TRUE";
+    $live = $env["CHINESE_HOLIDAY_CALENDAR_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

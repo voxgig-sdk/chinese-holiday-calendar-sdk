@@ -259,7 +259,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"date"` |  |
-| `"is_off_day"` |  |
+| `"isOffDay"` |  |
 | `"name"` |  |
 
 Operations: Load.
@@ -286,7 +286,7 @@ Create an instance: `holiday := client.Holiday(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `date` | `string` |  |
-| `is_off_day` | `bool` |  |
+| `isOffDay` | `bool` |  |
 | `name` | `string` |  |
 
 #### Example: Load

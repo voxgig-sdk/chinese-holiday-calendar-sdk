@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from chineseholidaycalendar_sdk.utility.voxgig_struct import voxgig_struct as vs
 from chineseholidaycalendar_sdk import ChineseHolidayCalendarSDK
-from core import helpers
+from chineseholidaycalendar_sdk.core import helpers
 from test import runner
 
 
@@ -63,11 +63,11 @@ def _holiday_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID": {},
-        "CHINESEHOLIDAYCALENDAR_TEST_LIVE": "FALSE",
+        "CHINESE_HOLIDAY_CALENDAR_TEST_HOLIDAY_ENTID": {},
+        "CHINESE_HOLIDAY_CALENDAR_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("CHINESEHOLIDAYCALENDAR_TEST_LIVE") == "TRUE"
+    live = env.get("CHINESE_HOLIDAY_CALENDAR_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

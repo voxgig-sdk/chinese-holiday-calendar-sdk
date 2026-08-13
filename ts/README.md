@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = ChineseHolidayCalendarSDK.test()
 
 const holiday = await client.Holiday().load({ id: 1 })
-// holiday is a bare entity populated with mock response data
+// holiday is the entity, populated with mock response data
+// — call holiday.data() for the record itself
 console.log(holiday)
 ```
 
@@ -285,7 +286,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `date` |  |
-| `is_off_day` |  |
+| `isOffDay` |  |
 | `name` |  |
 
 Operations: load.
@@ -312,7 +313,7 @@ Create an instance: `const holiday = client.Holiday()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `date` | `string` |  |
-| `is_off_day` | `boolean` |  |
+| `isOffDay` | `boolean` |  |
 | `name` | `string` |  |
 
 #### Example: Load

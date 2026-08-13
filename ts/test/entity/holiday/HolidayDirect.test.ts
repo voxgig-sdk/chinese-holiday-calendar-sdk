@@ -19,11 +19,15 @@ import {
 describe('HolidayDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when CHINESEHOLIDAYCALENDAR_TEST_LIVE=TRUE.
-  afterEach(liveDelay('CHINESEHOLIDAYCALENDAR_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when CHINESE_HOLIDAY_CALENDAR_TEST_LIVE=TRUE.
+  afterEach(liveDelay('CHINESE_HOLIDAY_CALENDAR_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new ChineseHolidayCalendarSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -77,17 +81,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID': {},
-    'CHINESEHOLIDAYCALENDAR_TEST_LIVE': 'FALSE',
+    'CHINESE_HOLIDAY_CALENDAR_TEST_HOLIDAY_ENTID': {},
+    'CHINESE_HOLIDAY_CALENDAR_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.CHINESEHOLIDAYCALENDAR_TEST_LIVE
+  const live = 'TRUE' === env.CHINESE_HOLIDAY_CALENDAR_TEST_LIVE
 
   if (live) {
     const client = new ChineseHolidayCalendarSDK({
     })
 
-    let idmap: any = env['CHINESEHOLIDAYCALENDAR_TEST_HOLIDAY_ENTID']
+    let idmap: any = env['CHINESE_HOLIDAY_CALENDAR_TEST_HOLIDAY_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

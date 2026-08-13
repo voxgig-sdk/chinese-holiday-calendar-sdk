@@ -34,7 +34,7 @@ client = ChineseHolidayCalendarSDK.new
 
 ```ruby
 begin
-  # load returns the bare Holiday record (raises on error).
+  # load returns the ENTITY — call data_get for the Holiday record (raises on error).
   holiday = client.Holiday.load({ "id" => 1 })
   puts holiday
 rescue => err
@@ -120,7 +120,8 @@ client = ChineseHolidayCalendarSDK.test({
   "entity" => { "holiday" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 holiday = client.Holiday.load({ "id" => "test01" })
 puts holiday
 ```
@@ -238,7 +239,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `date` |  |
-| `is_off_day` |  |
+| `isOffDay` |  |
 | `name` |  |
 
 Operations: Load.
@@ -265,13 +266,13 @@ Create an instance: `holiday = client.Holiday`
 | Field | Type | Description |
 | --- | --- | --- |
 | `date` | `String` |  |
-| `is_off_day` | `Boolean` |  |
+| `isOffDay` | `Boolean` |  |
 | `name` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Holiday record (raises on error).
+# load returns the ENTITY — call data_get for the Holiday record (raises on error).
 holiday = client.Holiday.load({ "id" => 1 })
 ```
 

@@ -23,7 +23,7 @@ support (`load`):
 
 ```ts
 const client = new ChineseHolidayCalendarSDK()
-const holiday = await client.Holiday().load()
+const holiday = await client.Holiday().load({ id: 1 })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = ChineseHolidayCalendarSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = ChineseHolidayCalendarSDK.test({
+  entity: {
+    holiday: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const holiday = await client.Holiday().load({ id: 1 })
-// holiday is a bare Holiday populated with mock data
+// holiday is the Holiday entity, populated with mock data
+// — call holiday.data() for the record itself
 console.log(holiday)
 ```
 
@@ -182,7 +191,7 @@ require_once 'chineseholidaycalendar_sdk.php';
 $client = new ChineseHolidayCalendarSDK();
 
 
-// Load a specific holiday (returns the bare record; throws on error)
+// Load a specific holiday (returns the ENTITY; call data_get() for the record; throws on error)
 $holiday = $client->Holiday()->load(["id" => 1]);
 print_r($holiday);
 ```
@@ -210,7 +219,7 @@ require_relative "ChineseHolidayCalendar_sdk"
 client = ChineseHolidayCalendarSDK.new
 
 
-# Load a specific holiday (returns the bare record; raises on error)
+# Load a specific holiday (returns the ENTITY; call data_get for the record)
 holiday = client.Holiday.load({ "id" => 1 })
 puts holiday
 ```
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://api.jiejiariapi.com](https://api.jiejiariapi.com)
 

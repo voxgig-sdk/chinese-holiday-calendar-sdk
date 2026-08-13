@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# ChineseHolidayCalendar SDK exists test
 
 import pytest
 from chineseholidaycalendar_sdk import ChineseHolidayCalendarSDK

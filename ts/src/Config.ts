@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'ChineseHolidayCalendar',
   }
 
 
@@ -63,7 +63,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "is_off_day",
+          "name": "isOffDay",
           "req": true,
           "type": "`$BOOLEAN`",
           "index$": 1
@@ -98,6 +98,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/holidays/{year}",
               "parts": [

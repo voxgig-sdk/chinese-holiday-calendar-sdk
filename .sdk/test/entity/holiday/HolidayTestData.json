@@ -3,19 +3,19 @@
     "holiday": {
       "HOLIDAY00": {
         "date": "s1e",
-        "is_off_day": false,
+        "isOffDay": false,
         "name": "s20",
         "id": "HOLIDAY00"
       },
       "HOLIDAY01": {
         "date": "s3c",
-        "is_off_day": false,
+        "isOffDay": false,
         "name": "s3e",
         "id": "HOLIDAY01"
       },
       "HOLIDAY02": {
         "date": "s5a",
-        "is_off_day": false,
+        "isOffDay": false,
         "name": "s5c",
         "id": "HOLIDAY02"
       }
@@ -25,7 +25,7 @@
     "holiday": {
       "holiday_ref01": {
         "date": "s78",
-        "is_off_day": false,
+        "isOffDay": false,
         "name": "s7a"
       }
     }

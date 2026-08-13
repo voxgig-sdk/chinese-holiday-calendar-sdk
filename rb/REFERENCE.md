@@ -94,7 +94,7 @@ holiday = client.Holiday
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `date` | `String` | Yes |  |
-| `is_off_day` | `Boolean` | Yes |  |
+| `isOffDay` | `Boolean` | Yes |  |
 | `name` | `String` | Yes |  |
 
 ### Operations

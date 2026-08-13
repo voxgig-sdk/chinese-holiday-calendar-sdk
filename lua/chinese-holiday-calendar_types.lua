@@ -8,7 +8,7 @@
 
 ---@class Holiday
 ---@field date string
----@field is_off_day boolean
+---@field isOffDay boolean
 ---@field name string
 
 ---@class HolidayLoadMatch

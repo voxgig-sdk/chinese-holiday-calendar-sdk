@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ ChineseHolidayCalendarUtility.registrar = ->(u) {
   u.prepare_params = ChineseHolidayCalendarUtilities::PrepareParams
   u.prepare_path = ChineseHolidayCalendarUtilities::PreparePath
   u.prepare_query = ChineseHolidayCalendarUtilities::PrepareQuery
+  u.graphql_body = ChineseHolidayCalendarUtilities::GraphqlBody
+  u.graphql_errors = ChineseHolidayCalendarUtilities::GraphqlErrors
   u.result_basic = ChineseHolidayCalendarUtilities::ResultBasic
   u.result_body = ChineseHolidayCalendarUtilities::ResultBody
   u.result_headers = ChineseHolidayCalendarUtilities::ResultHeaders

@@ -11,7 +11,7 @@ main: kit: entity: holiday: {
       type: "`$STRING`"
     }
     {
-      name: "is_off_day"
+      name: "isOffDay"
       req: true
       type: "`$BOOLEAN`"
     }

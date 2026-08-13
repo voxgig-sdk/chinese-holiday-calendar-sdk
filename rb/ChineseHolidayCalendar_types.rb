@@ -13,14 +13,14 @@
 # @!attribute [rw] date
 #   @return [String]
 #
-# @!attribute [rw] is_off_day
+# @!attribute [rw] isOffDay
 #   @return [Boolean]
 #
 # @!attribute [rw] name
 #   @return [String]
 Holiday = Struct.new(
   :date,
-  :is_off_day,
+  :isOffDay,
   :name,
   keyword_init: true
 )

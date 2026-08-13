@@ -7,7 +7,7 @@
 
 export interface Holiday {
   date: string
-  is_off_day: boolean
+  isOffDay: boolean
   name: string
 }
 

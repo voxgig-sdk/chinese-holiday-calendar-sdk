@@ -226,7 +226,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `date` |  |
-| `is_off_day` |  |
+| `isOffDay` |  |
 | `name` |  |
 
 Operations: Load.
@@ -253,7 +253,7 @@ Create an instance: `local holiday = client:Holiday(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `date` | `string` |  |
-| `is_off_day` | `boolean` |  |
+| `isOffDay` | `boolean` |  |
 | `name` | `string` |  |
 
 #### Example: Load

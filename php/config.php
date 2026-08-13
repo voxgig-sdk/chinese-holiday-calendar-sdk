@@ -39,7 +39,7 @@ class ChineseHolidayCalendarConfig
             ],
             [
               'active' => true,
-              'name' => 'is_off_day',
+              'name' => 'isOffDay',
               'req' => true,
               'type' => '`$BOOLEAN`',
               'index$' => 1,
@@ -74,6 +74,7 @@ class ChineseHolidayCalendarConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/holidays/{year}',
                   'parts' => [
