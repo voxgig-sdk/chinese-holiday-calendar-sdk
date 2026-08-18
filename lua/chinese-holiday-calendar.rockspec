@@ -23,6 +23,7 @@ build = {
   modules = {
     ["chinese-holiday-calendar_sdk"] = "chinese-holiday-calendar_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

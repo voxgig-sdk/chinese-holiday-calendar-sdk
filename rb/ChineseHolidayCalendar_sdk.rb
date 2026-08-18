@@ -28,7 +28,7 @@ class ChineseHolidayCalendarSDK
     utility = ChineseHolidayCalendarUtility.new
     @_utility = utility
 
-    config = ChineseHolidayCalendarConfig.make_config
+    config = ChineseHolidayCalendarConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

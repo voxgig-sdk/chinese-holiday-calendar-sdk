@@ -40,7 +40,7 @@ class ChineseHolidayCalendarSDK
         $utility = new ChineseHolidayCalendarUtility();
         $this->_utility = $utility;
 
-        $config = ChineseHolidayCalendarConfig::make_config();
+        $config = ChineseHolidayCalendarConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

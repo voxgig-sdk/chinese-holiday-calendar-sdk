@@ -1,6 +1,20 @@
 # ChineseHolidayCalendar SDK configuration
 
 module ChineseHolidayCalendarConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -26,25 +40,19 @@ module ChineseHolidayCalendarConfig
         "holiday" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "date",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "isOffDay",
               "req" => true,
               "type" => "`$BOOLEAN`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "name",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
           ],
           "name" => "holiday",
@@ -54,18 +62,15 @@ module ChineseHolidayCalendarConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "example" => 2024,
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "year",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
-                        "index$" => 0,
                       },
                     ],
                   },
@@ -90,10 +95,8 @@ module ChineseHolidayCalendarConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {

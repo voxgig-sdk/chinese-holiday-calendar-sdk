@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://api.jiejiariapi.com/v1',
+    base: "https://api.jiejiariapi.com/v1",
 
     headers: {
       "content-type": "application/json"
@@ -55,25 +55,19 @@ class Config {
     "holiday": {
       "fields": [
         {
-          "active": true,
           "name": "date",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "isOffDay",
           "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 1
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "name",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         }
       ],
       "name": "holiday",
@@ -83,18 +77,15 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": 2024,
                     "kind": "param",
                     "name": "id",
                     "orig": "year",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -118,11 +109,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

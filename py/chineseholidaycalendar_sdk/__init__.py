@@ -23,8 +23,8 @@ class ChineseHolidayCalendarSDK:
         utility = ChineseHolidayCalendarUtility()
         self._utility = utility
 
-        from chineseholidaycalendar_sdk.config import make_config
-        config = make_config()
+        from chineseholidaycalendar_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,
