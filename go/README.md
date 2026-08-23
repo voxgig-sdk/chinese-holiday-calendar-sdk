@@ -6,7 +6,7 @@ The Golang SDK for the ChineseHolidayCalendar API — an entity-oriented client 
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Holiday(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -258,9 +258,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"date"` |  |
-| `"isOffDay"` |  |
-| `"name"` |  |
+| `"date"` | The date of the holiday in YYYY-MM-DD format |
+| `"isOffDay"` | Whether this is an official day off (true) or a working day during a holiday period (false) |
+| `"name"` | The name of the holiday in Chinese |
 
 Operations: Load.
 
@@ -285,9 +285,9 @@ Create an instance: `holiday := client.Holiday(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `isOffDay` | `bool` |  |
-| `name` | `string` |  |
+| `date` | `string` | The date of the holiday in YYYY-MM-DD format |
+| `isOffDay` | `bool` | Whether this is an official day off (true) or a working day during a holiday period (false) |
+| `name` | `string` | The name of the holiday in Chinese |
 
 #### Example: Load
 

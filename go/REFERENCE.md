@@ -98,9 +98,9 @@ fmt.Println(holiday.GetName()) // "holiday"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `string` | Yes |  |
-| `isOffDay` | `bool` | Yes |  |
-| `name` | `string` | Yes |  |
+| `date` | `string` | Yes | The date of the holiday in YYYY-MM-DD format |
+| `isOffDay` | `bool` | Yes | Whether this is an official day off (true) or a working day during a holiday period (false) |
+| `name` | `string` | Yes | The name of the holiday in Chinese |
 
 ### Operations
 

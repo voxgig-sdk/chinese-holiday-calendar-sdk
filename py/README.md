@@ -241,9 +241,9 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `isOffDay` |  |
-| `name` |  |
+| `date` | The date of the holiday in YYYY-MM-DD format |
+| `isOffDay` | Whether this is an official day off (true) or a working day during a holiday period (false) |
+| `name` | The name of the holiday in Chinese |
 
 Operations: Load.
 
@@ -268,9 +268,9 @@ Create an instance: `holiday = client.Holiday()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `str` |  |
-| `isOffDay` | `bool` |  |
-| `name` | `str` |  |
+| `date` | `str` | The date of the holiday in YYYY-MM-DD format |
+| `isOffDay` | `bool` | Whether this is an official day off (true) or a working day during a holiday period (false) |
+| `name` | `str` | The name of the holiday in Chinese |
 
 #### Example: Load
 

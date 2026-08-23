@@ -225,9 +225,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `isOffDay` |  |
-| `name` |  |
+| `date` | The date of the holiday in YYYY-MM-DD format |
+| `isOffDay` | Whether this is an official day off (true) or a working day during a holiday period (false) |
+| `name` | The name of the holiday in Chinese |
 
 Operations: Load.
 
@@ -252,9 +252,9 @@ Create an instance: `local holiday = client:Holiday(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `isOffDay` | `boolean` |  |
-| `name` | `string` |  |
+| `date` | `string` | The date of the holiday in YYYY-MM-DD format |
+| `isOffDay` | `boolean` | Whether this is an official day off (true) or a working day during a holiday period (false) |
+| `name` | `string` | The name of the holiday in Chinese |
 
 #### Example: Load
 

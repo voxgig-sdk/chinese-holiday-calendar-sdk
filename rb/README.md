@@ -238,9 +238,9 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `isOffDay` |  |
-| `name` |  |
+| `date` | The date of the holiday in YYYY-MM-DD format |
+| `isOffDay` | Whether this is an official day off (true) or a working day during a holiday period (false) |
+| `name` | The name of the holiday in Chinese |
 
 Operations: Load.
 
@@ -265,9 +265,9 @@ Create an instance: `holiday = client.Holiday`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `String` |  |
-| `isOffDay` | `Boolean` |  |
-| `name` | `String` |  |
+| `date` | `String` | The date of the holiday in YYYY-MM-DD format |
+| `isOffDay` | `Boolean` | Whether this is an official day off (true) or a working day during a holiday period (false) |
+| `name` | `String` | The name of the holiday in Chinese |
 
 #### Example: Load
 

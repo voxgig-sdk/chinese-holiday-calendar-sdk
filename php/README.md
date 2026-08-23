@@ -248,9 +248,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `isOffDay` |  |
-| `name` |  |
+| `date` | The date of the holiday in YYYY-MM-DD format |
+| `isOffDay` | Whether this is an official day off (true) or a working day during a holiday period (false) |
+| `name` | The name of the holiday in Chinese |
 
 Operations: Load.
 
@@ -275,9 +275,9 @@ Create an instance: `$holiday = $client->Holiday();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `isOffDay` | `bool` |  |
-| `name` | `string` |  |
+| `date` | `string` | The date of the holiday in YYYY-MM-DD format |
+| `isOffDay` | `bool` | Whether this is an official day off (true) or a working day during a holiday period (false) |
+| `name` | `string` | The name of the holiday in Chinese |
 
 #### Example: Load
 

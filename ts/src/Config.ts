@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'ChineseHolidayCalendar',
+        slug: "chinese-holiday-calendar",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -57,16 +68,19 @@ class Config {
         {
           "name": "date",
           "req": true,
+          "short": "The date of the holiday in YYYY-MM-DD format",
           "type": "`$STRING`"
         },
         {
           "name": "isOffDay",
           "req": true,
+          "short": "Whether this is an official day off (true) or a working day during a holiday period (false)",
           "type": "`$BOOLEAN`"
         },
         {
           "name": "name",
           "req": true,
+          "short": "The name of the holiday in Chinese",
           "type": "`$STRING`"
         }
       ],

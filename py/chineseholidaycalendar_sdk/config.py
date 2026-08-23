@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "ChineseHolidayCalendar",
+            "slug": "chinese-holiday-calendar",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -51,16 +54,19 @@ def make_config():
           {
             "name": "date",
             "req": True,
+            "short": "The date of the holiday in YYYY-MM-DD format",
             "type": "`$STRING`",
           },
           {
             "name": "isOffDay",
             "req": True,
+            "short": "Whether this is an official day off (true) or a working day during a holiday period (false)",
             "type": "`$BOOLEAN`",
           },
           {
             "name": "name",
             "req": True,
+            "short": "The name of the holiday in Chinese",
             "type": "`$STRING`",
           },
         ],

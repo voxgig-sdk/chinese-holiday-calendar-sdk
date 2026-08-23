@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "ChineseHolidayCalendar",
+			"slug": "chinese-holiday-calendar",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,16 +37,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "date",
 						"req": true,
+						"short": "The date of the holiday in YYYY-MM-DD format",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "isOffDay",
 						"req": true,
+						"short": "Whether this is an official day off (true) or a working day during a holiday period (false)",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "name",
 						"req": true,
+						"short": "The name of the holiday in Chinese",
 						"type": "`$STRING`",
 					},
 				},

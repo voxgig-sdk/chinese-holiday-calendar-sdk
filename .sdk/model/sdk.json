@@ -36,18 +36,21 @@
               "active": true,
               "name": "date",
               "req": true,
+              "short": "The date of the holiday in YYYY-MM-DD format",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "isOffDay",
               "req": true,
+              "short": "Whether this is an official day off (true) or a working day during a holiday period (false)",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "name",
               "req": true,
+              "short": "The name of the holiday in Chinese",
               "type": "`$STRING`"
             }
           ],

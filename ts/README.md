@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -285,9 +285,9 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `date` |  |
-| `isOffDay` |  |
-| `name` |  |
+| `date` | The date of the holiday in YYYY-MM-DD format |
+| `isOffDay` | Whether this is an official day off (true) or a working day during a holiday period (false) |
+| `name` | The name of the holiday in Chinese |
 
 Operations: load.
 
@@ -312,9 +312,9 @@ Create an instance: `const holiday = client.Holiday()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `date` | `string` |  |
-| `isOffDay` | `boolean` |  |
-| `name` | `string` |  |
+| `date` | `string` | The date of the holiday in YYYY-MM-DD format |
+| `isOffDay` | `boolean` | Whether this is an official day off (true) or a working day during a holiday period (false) |
+| `name` | `string` | The name of the holiday in Chinese |
 
 #### Example: Load
 

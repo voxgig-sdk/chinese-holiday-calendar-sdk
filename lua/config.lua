@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "ChineseHolidayCalendar",
+      slug = "chinese-holiday-calendar",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -30,16 +33,19 @@ local function make_config()
           {
             ["name"] = "date",
             ["req"] = true,
+            ["short"] = "The date of the holiday in YYYY-MM-DD format",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "isOffDay",
             ["req"] = true,
+            ["short"] = "Whether this is an official day off (true) or a working day during a holiday period (false)",
             ["type"] = "`$BOOLEAN`",
           },
           {
             ["name"] = "name",
             ["req"] = true,
+            ["short"] = "The name of the holiday in Chinese",
             ["type"] = "`$STRING`",
           },
         },

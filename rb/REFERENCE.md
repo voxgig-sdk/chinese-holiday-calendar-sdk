@@ -93,9 +93,9 @@ holiday = client.Holiday
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `date` | `String` | Yes |  |
-| `isOffDay` | `Boolean` | Yes |  |
-| `name` | `String` | Yes |  |
+| `date` | `String` | Yes | The date of the holiday in YYYY-MM-DD format |
+| `isOffDay` | `Boolean` | Yes | Whether this is an official day off (true) or a working day during a holiday period (false) |
+| `name` | `String` | Yes | The name of the holiday in Chinese |
 
 ### Operations
 
