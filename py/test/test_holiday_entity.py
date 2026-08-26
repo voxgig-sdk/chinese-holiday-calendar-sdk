@@ -48,9 +48,13 @@ class TestHolidayEntity:
 
         # LOAD
         holiday_ref01_ent = client.Holiday(None)
-        holiday_ref01_match_dt0 = {}
+        holiday_ref01_match_dt0 = {
+            "id": holiday_ref01_data["id"],
+        }
         holiday_ref01_data_dt0_loaded = holiday_ref01_ent.load(holiday_ref01_match_dt0, None)
-        assert holiday_ref01_data_dt0_loaded is not None
+        holiday_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(holiday_ref01_data_dt0_loaded))
+        assert holiday_ref01_data_dt0_load_result is not None
+        assert holiday_ref01_data_dt0_load_result["id"] == holiday_ref01_data["id"]
 
 
 

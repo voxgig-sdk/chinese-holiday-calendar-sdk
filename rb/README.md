@@ -239,6 +239,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `date` | The date of the holiday in YYYY-MM-DD format |
+| `id` |  |
 | `isOffDay` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | The name of the holiday in Chinese |
 
@@ -266,6 +267,7 @@ Create an instance: `holiday = client.Holiday`
 | Field | Type | Description |
 | --- | --- | --- |
 | `date` | `String` | The date of the holiday in YYYY-MM-DD format |
+| `id` | `String` |  |
 | `isOffDay` | `Boolean` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `String` | The name of the holiday in Chinese |
 

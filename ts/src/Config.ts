@@ -40,7 +40,8 @@ class Config {
      test:     {
       "options": {
         "active": false
-      }
+      },
+      "transport": "base"
     },
 
   }
@@ -69,6 +70,10 @@ class Config {
           "name": "date",
           "req": true,
           "short": "The date of the holiday in YYYY-MM-DD format",
+          "type": "`$STRING`"
+        },
+        {
+          "name": "id",
           "type": "`$STRING`"
         },
         {

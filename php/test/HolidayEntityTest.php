@@ -48,9 +48,13 @@ class HolidayEntityTest extends TestCase
 
         // LOAD
         $holiday_ref01_ent = $client->Holiday(null);
-        $holiday_ref01_match_dt0 = [];
+        $holiday_ref01_match_dt0 = [
+            "id" => $holiday_ref01_data["id"],
+        ];
         $holiday_ref01_data_dt0_loaded = $holiday_ref01_ent->load($holiday_ref01_match_dt0, null);
-        $this->assertNotNull($holiday_ref01_data_dt0_loaded);
+        $holiday_ref01_data_dt0_load_result = Helpers::to_map(is_object($holiday_ref01_data_dt0_loaded) && method_exists($holiday_ref01_data_dt0_loaded, 'data_get') ? $holiday_ref01_data_dt0_loaded->data_get() : $holiday_ref01_data_dt0_loaded);
+        $this->assertNotNull($holiday_ref01_data_dt0_load_result);
+        $this->assertEquals($holiday_ref01_data_dt0_load_result["id"], $holiday_ref01_data["id"]);
 
     }
 }

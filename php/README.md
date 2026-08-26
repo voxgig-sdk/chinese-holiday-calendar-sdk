@@ -249,6 +249,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `date` | The date of the holiday in YYYY-MM-DD format |
+| `id` |  |
 | `isOffDay` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | The name of the holiday in Chinese |
 
@@ -276,6 +277,7 @@ Create an instance: `$holiday = $client->Holiday();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `date` | `string` | The date of the holiday in YYYY-MM-DD format |
+| `id` | `string` |  |
 | `isOffDay` | `bool` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `string` | The name of the holiday in Chinese |
 

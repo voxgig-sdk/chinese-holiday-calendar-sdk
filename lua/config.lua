@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -34,6 +35,10 @@ local function make_config()
             ["name"] = "date",
             ["req"] = true,
             ["short"] = "The date of the holiday in YYYY-MM-DD format",
+            ["type"] = "`$STRING`",
+          },
+          {
+            ["name"] = "id",
             ["type"] = "`$STRING`",
           },
           {

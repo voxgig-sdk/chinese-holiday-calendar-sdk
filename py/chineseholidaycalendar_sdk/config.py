@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -55,6 +56,10 @@ def make_config():
             "name": "date",
             "req": True,
             "short": "The date of the holiday in YYYY-MM-DD format",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {

@@ -44,10 +44,14 @@ describe("HolidayEntity", function()
 
     -- LOAD
     local holiday_ref01_ent = client:Holiday(nil)
-    local holiday_ref01_match_dt0 = {}
+    local holiday_ref01_match_dt0 = {
+      id = holiday_ref01_data["id"],
+    }
     local holiday_ref01_data_dt0_loaded, err = holiday_ref01_ent:load(holiday_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(holiday_ref01_data_dt0_loaded)
+    local holiday_ref01_data_dt0_load_result = helpers.to_map(type(holiday_ref01_data_dt0_loaded) == 'table' and holiday_ref01_data_dt0_loaded.data_get and holiday_ref01_data_dt0_loaded:data_get() or holiday_ref01_data_dt0_loaded)
+    assert.is_not_nil(holiday_ref01_data_dt0_load_result)
+    assert.are.equal(holiday_ref01_data_dt0_load_result["id"], holiday_ref01_data["id"])
 
   end)
 end)

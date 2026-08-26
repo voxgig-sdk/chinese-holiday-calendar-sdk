@@ -16,6 +16,7 @@ declare(strict_types=1);
 class Holiday
 {
     public string $date;
+    public ?string $id = null;
     public bool $isOffDay;
     public string $name;
 }

@@ -15,6 +15,7 @@ import (
 // Holiday is the typed data model for the holiday entity.
 type Holiday struct {
 	Date string `json:"date"`
+	Id *string `json:"id,omitempty"`
 	IsOffDay bool `json:"isOffDay"`
 	Name string `json:"name"`
 }

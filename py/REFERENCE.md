@@ -88,6 +88,7 @@ holiday = client.Holiday()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `date` | `str` | Yes | The date of the holiday in YYYY-MM-DD format |
+| `id` | `str` | No |  |
 | `isOffDay` | `bool` | Yes | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `str` | Yes | The name of the holiday in Chinese |
 

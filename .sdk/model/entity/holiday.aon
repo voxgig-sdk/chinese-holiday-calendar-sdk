@@ -12,6 +12,11 @@ main: kit: entity: holiday: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "isOffDay"
       req: true
       short: "Whether this is an official day off (true) or a working day during a holiday period (false)"
@@ -24,6 +29,11 @@ main: kit: entity: holiday: {
       type: "`$STRING`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "holiday"
   op: {

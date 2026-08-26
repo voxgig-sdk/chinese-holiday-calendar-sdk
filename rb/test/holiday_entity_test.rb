@@ -41,9 +41,13 @@ class HolidayEntityTest < Minitest::Test
 
     # LOAD
     holiday_ref01_ent = client.Holiday(nil)
-    holiday_ref01_match_dt0 = {}
+    holiday_ref01_match_dt0 = {
+      "id" => holiday_ref01_data["id"],
+    }
     holiday_ref01_data_dt0_loaded = holiday_ref01_ent.load(holiday_ref01_match_dt0, nil)
-    assert !holiday_ref01_data_dt0_loaded.nil?
+    holiday_ref01_data_dt0_load_result = Helpers.to_map(holiday_ref01_data_dt0_loaded.respond_to?(:data_get) ? holiday_ref01_data_dt0_loaded.data_get : holiday_ref01_data_dt0_loaded)
+    assert !holiday_ref01_data_dt0_load_result.nil?
+    assert_equal holiday_ref01_data_dt0_load_result["id"], holiday_ref01_data["id"]
 
   end
 end

@@ -16,10 +16,14 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class Holiday(TypedDict):
+class HolidayRequired(TypedDict):
     date: str
     isOffDay: bool
     name: str
+
+
+class Holiday(HolidayRequired, total=False):
+    id: str
 
 
 class HolidayLoadMatch(TypedDict):

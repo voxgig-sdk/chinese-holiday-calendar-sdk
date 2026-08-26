@@ -145,7 +145,7 @@ await entity.load({ id: 1 })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -286,6 +286,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `date` | The date of the holiday in YYYY-MM-DD format |
+| `id` |  |
 | `isOffDay` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | The name of the holiday in Chinese |
 
@@ -313,6 +314,7 @@ Create an instance: `const holiday = client.Holiday()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `date` | `string` | The date of the holiday in YYYY-MM-DD format |
+| `id` | `string` |  |
 | `isOffDay` | `boolean` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `string` | The name of the holiday in Chinese |
 

@@ -8,6 +8,7 @@
 
 ---@class Holiday
 ---@field date string
+---@field id? string
 ---@field isOffDay boolean
 ---@field name string
 

@@ -61,13 +61,19 @@ func TestHolidayEntity(t *testing.T) {
 
 		// LOAD
 		holidayRef01Ent := client.Holiday(nil)
-		holidayRef01MatchDt0 := map[string]any{}
+		holidayRef01MatchDt0 := map[string]any{
+			"id": holidayRef01Data["id"],
+		}
 		holidayRef01DataDt0Loaded, err := holidayRef01Ent.Load(holidayRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if holidayRef01DataDt0Loaded == nil {
-			t.Fatal("expected load result to be non-nil")
+		holidayRef01DataDt0LoadResult := core.ToMapAny(entityData(holidayRef01DataDt0Loaded))
+		if holidayRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if holidayRef01DataDt0LoadResult["id"] != holidayRef01Data["id"] {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

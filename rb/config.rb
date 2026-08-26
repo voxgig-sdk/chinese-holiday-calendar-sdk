@@ -28,6 +28,7 @@ module ChineseHolidayCalendarConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -46,6 +47,10 @@ module ChineseHolidayCalendarConfig
               "name" => "date",
               "req" => true,
               "short" => "The date of the holiday in YYYY-MM-DD format",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {

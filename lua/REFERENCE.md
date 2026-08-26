@@ -91,6 +91,7 @@ local holiday = client:Holiday(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `date` | `string` | Yes | The date of the holiday in YYYY-MM-DD format |
+| `id` | `string` | No |  |
 | `isOffDay` | `boolean` | Yes | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `string` | Yes | The name of the holiday in Chinese |
 
