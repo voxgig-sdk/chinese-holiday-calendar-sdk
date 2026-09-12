@@ -58,6 +58,7 @@ class ChineseHolidayCalendarConfig
         'holiday' => [
           'fields' => [
             [
+              'format' => 'date',
               'name' => 'date',
               'req' => true,
               'short' => 'The date of the holiday in YYYY-MM-DD format',
@@ -79,6 +80,10 @@ class ChineseHolidayCalendarConfig
               'short' => 'The name of the holiday in Chinese',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'holiday',
           'op' => [
@@ -102,13 +107,17 @@ class ChineseHolidayCalendarConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/holidays/{year}',
-                  'parts' => [
-                    'holidays',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'year' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'holidays',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -119,6 +128,10 @@ class ChineseHolidayCalendarConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'holidays',
+                    '{id}',
                   ],
                 ],
               ],

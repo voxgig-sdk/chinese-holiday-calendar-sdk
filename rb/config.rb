@@ -44,6 +44,7 @@ module ChineseHolidayCalendarConfig
         "holiday" => {
           "fields" => [
             {
+              "format" => "date",
               "name" => "date",
               "req" => true,
               "short" => "The date of the holiday in YYYY-MM-DD format",
@@ -66,6 +67,10 @@ module ChineseHolidayCalendarConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "holiday",
           "op" => {
             "load" => {
@@ -88,15 +93,19 @@ module ChineseHolidayCalendarConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/holidays/{year}",
-                  "parts" => [
-                    "holidays",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "year" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "holidays",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -106,6 +115,10 @@ module ChineseHolidayCalendarConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "holidays",
+                    "{id}",
+                  ],
                 },
               ],
             },

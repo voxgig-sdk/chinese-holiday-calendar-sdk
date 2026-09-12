@@ -32,6 +32,7 @@ local function make_config()
       ["holiday"] = {
         ["fields"] = {
           {
+            ["format"] = "date",
             ["name"] = "date",
             ["req"] = true,
             ["short"] = "The date of the holiday in YYYY-MM-DD format",
@@ -53,6 +54,10 @@ local function make_config()
             ["short"] = "The name of the holiday in Chinese",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "holiday",
         ["op"] = {
@@ -76,13 +81,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/holidays/{year}",
-                ["parts"] = {
-                  "holidays",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["year"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "holidays",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -93,6 +102,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "holidays",
+                  "{id}",
                 },
               },
             },
