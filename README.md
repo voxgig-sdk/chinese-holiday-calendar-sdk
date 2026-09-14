@@ -105,7 +105,7 @@ local result, err = client:Holiday():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases) |
+| TypeScript | `@voxgig-sdk/chinese-holiday-calendar-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases) |
 | Python | `voxgig-sdk-chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases) |
 | PHP | `voxgig-sdk/chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go` | `go get github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Holiday():load({ id = "test01" })
 ### TypeScript
 
 ```ts
-import { ChineseHolidayCalendarSDK } from '@voxgig-sdk/chinese-holiday-calendar'
+import { ChineseHolidayCalendarSDK } from '@voxgig-sdk/chinese-holiday-calendar-sdk'
 
 const client = new ChineseHolidayCalendarSDK()
 

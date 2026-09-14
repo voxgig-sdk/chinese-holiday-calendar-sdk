@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ChineseHolidayCalendarSDK } from '@voxgig-sdk/chinese-holiday-calendar'
+import { ChineseHolidayCalendarSDK } from '@voxgig-sdk/chinese-holiday-calendar-sdk'
 
 const client = new ChineseHolidayCalendarSDK()
 ```
@@ -407,7 +407,7 @@ chinese-holiday-calendar/
 Import the SDK from the package root:
 
 ```ts
-import { ChineseHolidayCalendarSDK } from '@voxgig-sdk/chinese-holiday-calendar'
+import { ChineseHolidayCalendarSDK } from '@voxgig-sdk/chinese-holiday-calendar-sdk'
 ```
 
 ### Entity state
