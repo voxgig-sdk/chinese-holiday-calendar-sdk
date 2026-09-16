@@ -1,12 +1,18 @@
 # ChineseHolidayCalendar SDK feature factory
 
 from chineseholidaycalendar_sdk.feature.base_feature import ChineseHolidayCalendarBaseFeature
+from chineseholidaycalendar_sdk.feature.ratelimit_feature import ChineseHolidayCalendarRatelimitFeature
+from chineseholidaycalendar_sdk.feature.retry_feature import ChineseHolidayCalendarRetryFeature
 from chineseholidaycalendar_sdk.feature.test_feature import ChineseHolidayCalendarTestFeature
+from chineseholidaycalendar_sdk.feature.timeout_feature import ChineseHolidayCalendarTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: ChineseHolidayCalendarBaseFeature(),
+    "ratelimit": lambda: ChineseHolidayCalendarRatelimitFeature(),
+    "retry": lambda: ChineseHolidayCalendarRetryFeature(),
     "test": lambda: ChineseHolidayCalendarTestFeature(),
+    "timeout": lambda: ChineseHolidayCalendarTimeoutFeature(),
 }
 
 
