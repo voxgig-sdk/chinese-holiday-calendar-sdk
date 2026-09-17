@@ -105,12 +105,12 @@ local result, err = client:Holiday():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/chinese-holiday-calendar-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases) |
-| Python | `voxgig-sdk-chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases) |
-| PHP | `voxgig-sdk/chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases) |
+| TypeScript | `@voxgig-sdk/chinese-holiday-calendar-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/tags) |
+| Python | `voxgig-sdk-chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/tags) |
+| PHP | `voxgig-sdk/chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go` | `go get github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go@latest` |
-| Ruby | `voxgig-sdk-chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases) |
-| Lua | `voxgig-sdk-chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases) |
+| Ruby | `voxgig-sdk-chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/tags) |
+| Lua | `voxgig-sdk-chinese-holiday-calendar` | publish pending — [install from git tag](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go-cli` | `go install github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go-cli/cmd/chinese-holiday-calendar@latest` |
 | Go MCP server | `github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go-mcp` | `go get github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go-mcp@latest` |
 
