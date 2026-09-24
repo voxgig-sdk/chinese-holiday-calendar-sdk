@@ -1,0 +1,32 @@
+# BasicHolidayFlow
+
+main: kit: flow: BasicHolidayFlow:
+{
+  entity: "holiday",
+  kind: "basic",
+  name: "BasicHolidayFlow",
+  step: [
+    {
+      i: {
+        ref: "holiday_ref01",
+        srcdatavar: "holiday_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "holiday01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-holiday_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicHolidayFlow"
+}

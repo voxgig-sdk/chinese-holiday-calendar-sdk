@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -113,27 +106,31 @@ class Config {
         "holiday": {
             "fields": [
                 {
-                    "format": "date",
                     "name": "date",
+                    "title": "Date",
+                    "type": "`$STRING`",
                     "req": true,
                     "short": "The date of the holiday in YYYY-MM-DD format",
-                    "type": "`$STRING`"
+                    "format": "date"
                 },
                 {
                     "name": "id",
+                    "title": "Id",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "isOffDay",
+                    "title": "Is Off Day",
+                    "type": "`$BOOLEAN`",
                     "req": true,
-                    "short": "Whether this is an official day off (true) or a working day during a holiday period (false)",
-                    "type": "`$BOOLEAN`"
+                    "short": "Whether this is an official day off (true) or a working day during a holiday period (false)"
                 },
                 {
                     "name": "name",
+                    "title": "Name",
+                    "type": "`$STRING`",
                     "req": true,
-                    "short": "The name of the holiday in Chinese",
-                    "type": "`$STRING`"
+                    "short": "The name of the holiday in Chinese"
                 }
             ],
             "id": {
@@ -147,26 +144,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "example": 2024,
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "year",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/holidays/{year}",
-                            "rename": {
-                                "param": {
-                                    "year": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "holidays"
@@ -175,19 +155,36 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
+                            "parts": [
+                                "holidays",
+                                "{id}"
+                            ],
+                            "rename": {
+                                "param": {
+                                    "year": "id"
+                                }
                             },
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "holidays",
-                                "{id}"
-                            ]
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "year",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": 2024
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }

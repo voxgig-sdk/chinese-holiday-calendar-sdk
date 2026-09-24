@@ -90,27 +90,31 @@ func MakeConfig() map[string]any {
 			"holiday": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "date",
 						"name": "date",
+						"title": "Date",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The date of the holiday in YYYY-MM-DD format",
-						"type": "`$STRING`",
+						"format": "date",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "isOffDay",
+						"title": "Is Off Day",
+						"type": "`$BOOLEAN`",
 						"req": true,
 						"short": "Whether this is an official day off (true) or a working day during a holiday period (false)",
-						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The name of the holiday in Chinese",
-						"type": "`$STRING`",
 					},
 				},
 				"id": map[string]any{
@@ -124,26 +128,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": 2024,
-											"kind": "param",
-											"name": "id",
-											"orig": "year",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/holidays/{year}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"year": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "holidays",
@@ -152,18 +139,35 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
+								"parts": []any{
+									"holidays",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"year": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"holidays",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "year",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": 2024,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},

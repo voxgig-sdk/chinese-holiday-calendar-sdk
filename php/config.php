@@ -112,27 +112,31 @@ class ChineseHolidayCalendarConfig
         'holiday' => [
           'fields' => [
             [
-              'format' => 'date',
               'name' => 'date',
+              'title' => 'Date',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The date of the holiday in YYYY-MM-DD format',
-              'type' => '`$STRING`',
+              'format' => 'date',
             ],
             [
               'name' => 'id',
+              'title' => 'Id',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'isOffDay',
+              'title' => 'Is Off Day',
+              'type' => '`$BOOLEAN`',
               'req' => true,
               'short' => 'Whether this is an official day off (true) or a working day during a holiday period (false)',
-              'type' => '`$BOOLEAN`',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'req' => true,
               'short' => 'The name of the holiday in Chinese',
-              'type' => '`$STRING`',
             ],
           ],
           'id' => [
@@ -146,26 +150,9 @@ class ChineseHolidayCalendarConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => 2024,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'year',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/holidays/{year}',
-                  'rename' => [
-                    'param' => [
-                      'year' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'holidays',
@@ -174,18 +161,35 @@ class ChineseHolidayCalendarConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
+                  'parts' => [
+                    'holidays',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'year' => 'id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'holidays',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'year',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => 2024,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
