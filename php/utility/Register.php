@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 ChineseHolidayCalendarUtility::setRegistrar(function (ChineseHolidayCalendarUtility $u): void {
     $u->clean = [ChineseHolidayCalendarClean::class, 'call'];
+    $u->clean_add = [ChineseHolidayCalendarClean::class, 'add'];
+    $u->clean_explain = [ChineseHolidayCalendarDone::class, 'clean_explain'];
     $u->done = [ChineseHolidayCalendarDone::class, 'call'];
     $u->make_error = [ChineseHolidayCalendarMakeError::class, 'call'];
     $u->feature_add = [ChineseHolidayCalendarFeatureAdd::class, 'call'];

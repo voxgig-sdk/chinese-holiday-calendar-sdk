@@ -12,9 +12,14 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`):
+GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases)), or
+from a clone as a Composer path repository:
 
-- Releases: [https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases](https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/chinese-holiday-calendar-sdk
+composer config repositories.chinese-holiday-calendar-sdk path ./chinese-holiday-calendar-sdk/php
+composer require voxgig-sdk/chinese-holiday-calendar-sdk:@dev
+```
 
 
 ## Tutorial: your first API call

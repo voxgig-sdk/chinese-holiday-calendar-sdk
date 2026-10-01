@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 ChineseHolidayCalendarUtility.registrar = ->(u) {
   u.clean = ChineseHolidayCalendarUtilities::Clean
+  u.clean_add = ChineseHolidayCalendarUtilities::CleanAdd
+  u.clean_explain = ChineseHolidayCalendarUtilities::CleanExplain
   u.done = ChineseHolidayCalendarUtilities::Done
   u.make_error = ChineseHolidayCalendarUtilities::MakeError
   u.feature_add = ChineseHolidayCalendarUtilities::FeatureAdd
