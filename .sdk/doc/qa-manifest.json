@@ -3,5 +3,15 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Production server",
+      "Successful response with holiday data",
+      "The date of the holiday in YYYY-MM-DD format",
+      "The name of the holiday in Chinese",
+      "This API provides a comprehensive listing of public holidays in China for the year 2024. It includes the date, name of the holiday, and whether it is an off day or not.",
+      "Whether this is an official day off (true) or a working day during a holiday period (false)"
+    ]
+  }
 }

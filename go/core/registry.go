@@ -12,5 +12,5 @@ var NewTestFeatureFunc func() Feature
 
 var NewTimeoutFeatureFunc func() Feature
 
-var NewHolidayEntityFunc func(client *ChineseHolidayCalendarSDK, entopts map[string]any) ChineseHolidayCalendarEntity
+var NewHolidayEntityFunc func(client *ChineseHolidayCalendarSDK, entopts map[string]any) ChineseHolidayCalendarEntityBase
 

@@ -13,7 +13,12 @@ type Context = core.Context
 type Utility = core.Utility
 type Feature = core.Feature
 type Entity = core.Entity
-type ChineseHolidayCalendarEntity = core.ChineseHolidayCalendarEntity
+type ChineseHolidayCalendarEntityBase = core.ChineseHolidayCalendarEntityBase
+
+// Deprecated: use ChineseHolidayCalendarEntityBase.
+type ChineseHolidayCalendarEntity = core.ChineseHolidayCalendarEntityBase
+
+type StreamItem = core.StreamItem
 type FetcherFunc = core.FetcherFunc
 type Spec = core.Spec
 type Result = core.Result
@@ -41,7 +46,7 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewHolidayEntityFunc = func(client *core.ChineseHolidayCalendarSDK, entopts map[string]any) core.ChineseHolidayCalendarEntity {
+	core.NewHolidayEntityFunc = func(client *core.ChineseHolidayCalendarSDK, entopts map[string]any) core.ChineseHolidayCalendarEntityBase {
 		return entity.NewHolidayEntity(client, entopts)
 	}
 }

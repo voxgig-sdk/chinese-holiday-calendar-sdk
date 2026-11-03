@@ -75,7 +75,7 @@ func runOp(client *sdk.ChineseHolidayCalendarSDK, op string, query *eng.Value, e
 
 // entityFor dispatches on the lowercase entity name. The generator
 // emits one `case "<name>":` per entity defined in the SDK model.
-func entityFor(client *sdk.ChineseHolidayCalendarSDK, name string) (sdk.ChineseHolidayCalendarEntity, error) {
+func entityFor(client *sdk.ChineseHolidayCalendarSDK, name string) (sdk.ChineseHolidayCalendarEntityBase, error) {
 	switch strings.ToLower(name) {
 	case "holiday":
 		return client.Holiday(nil), nil

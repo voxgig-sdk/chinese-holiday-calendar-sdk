@@ -54,6 +54,14 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Holiday();
         (0, node_assert_1.default)(null != ent);
     });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.ChineseHolidayCalendarSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Holiday().load({ "id": "x" }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.CHINESE_HOLIDAY_CALENDAR_TEST_LIVE;
         for (const op of ['load']) {
@@ -62,7 +70,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "date": { "a": true, "fo": "date", "h": "Date", "n": "date", "r": true, "sh": "The date of the holiday in YYYY-MM-DD format", "t": "`$STRING`", "key$": "date", "index$": 0 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "t": "`$STRING`", "key$": "id", "index$": 1 }, "isOffDay": { "a": true, "h": "Is Off Day", "n": "isOffDay", "r": true, "sh": "Whether this is an official day off (true) or a working day during a holiday period (false)", "t": "`$BOOLEAN`", "key$": "isOffDay", "index$": 2 }, "name": { "a": true, "h": "Name", "n": "name", "r": true, "sh": "The name of the holiday in Chinese", "t": "`$STRING`", "key$": "name", "index$": 3 } }, "id": { "field": "id", "name": "id" }, "name": "holiday", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /holidays/{year}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "ex": 2024, "k": "param", "n": "id", "or": "year", "r": true, "t": "`$INTEGER`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/holidays/{year}", "q": { "exist": ["id"] }, "r": { "param": { "year": "id" } }, "s": [{ "lit": "holidays" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "holiday", "name__orig": "holiday", "Name": "Holiday", "name_": "holiday", "name-": "holiday", "NAME": "HOLIDAY", "index$": 0 }, { "active": true, "entity": "holiday", "key$": "BasicHolidayFlow", "kind": "basic", "name": "BasicHolidayFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "holiday_ref01", "srcdatavar": "holiday_ref01_data", "suffix": "_dt0" }, "m": { "id": "holiday01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-holiday_ref01" } }], "index$": 0 }] }, 'Holiday', { "GET /holidays/{year}": { "protocol": "http", "parameters": [{ "name": "year", "in": "path", "required": true, "description": "The year for which to retrieve holidays (e.g., 2024)", "schema": { "type": "integer", "minimum": 2000, "maximum": 2100, "example": 2024 }, "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "date": { "a": true, "fo": "date", "h": "Date", "n": "date", "r": true, "sh": "The date of the holiday in YYYY-MM-DD format", "t": "`$STRING`", "key$": "date", "index$": 0 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "t": "`$STRING`", "key$": "id", "index$": 1 }, "isOffDay": { "a": true, "h": "Is Off Day", "n": "isOffDay", "r": true, "sh": "Whether this is an official day off (true) or a working day during a holiday period (false)", "t": "`$BOOLEAN`", "key$": "isOffDay", "index$": 2 }, "name": { "a": true, "h": "Name", "n": "name", "r": true, "sh": "The name of the holiday in Chinese", "t": "`$STRING`", "key$": "name", "index$": 3 } }, "id": { "field": "id", "name": "id" }, "name": "holiday", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /holidays/{year}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "ex": 2024, "k": "param", "n": "id", "or": "year", "r": true, "t": "`$INTEGER`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/holidays/{year}", "q": { "exist": ["id"] }, "r": { "param": { "year": "id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "holidays" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "holiday", "name__orig": "holiday", "Name": "Holiday", "name_": "holiday", "name-": "holiday", "NAME": "HOLIDAY", "index$": 0 }, { "active": true, "entity": "holiday", "key$": "BasicHolidayFlow", "kind": "basic", "name": "BasicHolidayFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "holiday_ref01", "srcdatavar": "holiday_ref01_data", "suffix": "_dt0" }, "m": { "id": "holiday01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-holiday_ref01" } }], "index$": 0, "route": "GET /holidays/{year}", "record": {} }] }, 'Holiday', { "GET /holidays/{year}": { "protocol": "http", "parameters": [{ "name": "year", "in": "path", "required": true, "description": "The year for which to retrieve holidays (e.g., 2024)", "schema": { "type": "integer", "minimum": 2000, "maximum": 2100, "example": 2024 }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -77,6 +85,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(holiday_ref01_data_dt0.id === holiday_ref01_data.id);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null
