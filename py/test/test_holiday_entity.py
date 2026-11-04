@@ -37,7 +37,7 @@ class TestHolidayEntity:
         client = ChineseHolidayCalendarSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.Holiday(None).load({"id": "x"}, None)
+            client.Holiday(None).load({"year": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,19 +46,15 @@ class TestHolidayEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["load"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "holiday." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"]:
-            for _live_key, _live_ex in {"holiday01": 2024}.items():
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    setup["idmap"][_live_key] = _live_ex
+            pytest.skip("Live coverage incomplete: the flow has no step to run")
+
         client = setup["client"]
-        if setup["live"]:
-            runner.live_existing(setup, LIVE_STRICT, "holiday",
-                                 lambda: [{"id": setup["idmap"].get("holiday01")}])
 
         # Bootstrap entity data from existing test data.
         holiday_ref01_data_raw = vs.items(helpers.to_map(
@@ -66,16 +62,6 @@ class TestHolidayEntity:
         holiday_ref01_data = None
         if len(holiday_ref01_data_raw) > 0:
             holiday_ref01_data = helpers.to_map(holiday_ref01_data_raw[0][1])
-
-        # LOAD
-        holiday_ref01_ent = client.Holiday(None)
-        holiday_ref01_match_dt0 = {
-            "id": holiday_ref01_data["id"],
-        }
-        holiday_ref01_data_dt0_loaded = holiday_ref01_ent.load(holiday_ref01_match_dt0, None)
-        holiday_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(holiday_ref01_data_dt0_loaded))
-        assert holiday_ref01_data_dt0_load_result is not None
-        assert holiday_ref01_data_dt0_load_result["id"] == holiday_ref01_data["id"]
 
 
 

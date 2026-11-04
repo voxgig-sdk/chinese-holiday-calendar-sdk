@@ -33,13 +33,13 @@ const utility_1 = require("../../utility");
         const params = {};
         const query = {};
         if (setup.live) {
-            params.id = 2024;
+            params.year = 2024;
         }
         else {
-            params.id = 'direct01';
+            params.year = 'direct01';
         }
         const result = await client.direct({
-            path: 'holidays/{id}',
+            path: 'holidays/{year}',
             method: 'GET',
             params,
             query,
@@ -87,7 +87,7 @@ function directSetup(mockres) {
             idmap = JSON.parse(idmap);
         }
         // A path parameter's example stands in for an id *_ENTID does not give.
-        idmap = Object.assign({ holiday01: 2024 }, 'object' === typeof idmap ? idmap : {});
+        idmap = Object.assign({ year01: 2024 }, 'object' === typeof idmap ? idmap : {});
         return { client, calls, live, idmap, transport };
     }
     const mockFetch = async (url, init) => {

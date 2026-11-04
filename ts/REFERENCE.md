@@ -128,7 +128,6 @@ const holiday = client.Holiday()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `date` | `string` | Yes | The date of the holiday in YYYY-MM-DD format |
-| `id` | `string` | No |  |
 | `isOffDay` | `boolean` | Yes | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `string` | Yes | The name of the holiday in Chinese |
 
@@ -139,7 +138,7 @@ const holiday = client.Holiday()
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const result = await client.Holiday().load({ id: 1 })
+const result = await client.Holiday().load({ year: 1 })
 ```
 
 ### Common Methods

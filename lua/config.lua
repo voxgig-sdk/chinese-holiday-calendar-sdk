@@ -95,11 +95,6 @@ local function make_config()
             ["format"] = "date",
           },
           {
-            ["name"] = "id",
-            ["title"] = "Id",
-            ["type"] = "`$STRING`",
-          },
-          {
             ["name"] = "isOffDay",
             ["title"] = "Is Off Day",
             ["type"] = "`$BOOLEAN`",
@@ -113,10 +108,6 @@ local function make_config()
             ["req"] = true,
             ["short"] = "The name of the holiday in Chinese",
           },
-        },
-        ["id"] = {
-          ["field"] = "id",
-          ["name"] = "id",
         },
         ["name"] = "holiday",
         ["op"] = {
@@ -133,18 +124,14 @@ local function make_config()
                     ["lit"] = "holidays",
                   },
                   {
-                    ["var"] = "id",
+                    ["var"] = "year",
                   },
                 },
                 ["parts"] = {
                   "holidays",
-                  "{id}",
+                  "{year}",
                 },
-                ["rename"] = {
-                  ["param"] = {
-                    ["year"] = "id",
-                  },
-                },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
@@ -152,7 +139,7 @@ local function make_config()
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["name"] = "id",
+                      ["name"] = "year",
                       ["orig"] = "year",
                       ["type"] = "`$INTEGER`",
                       ["kind"] = "param",
@@ -163,7 +150,7 @@ local function make_config()
                 },
                 ["select"] = {
                   ["exist"] = {
-                    "id",
+                    "year",
                   },
                 },
                 ["response"] = {

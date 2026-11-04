@@ -43,7 +43,7 @@ const client = new ChineseHolidayCalendarSDK()
 
 ```ts
 try {
-  const holiday = await client.Holiday().load({ id: 1 })
+  const holiday = await client.Holiday().load({ year: 1 })
   console.log(holiday.data())
 } catch (err) {
   console.error('load failed:', err)
@@ -57,7 +57,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const holiday = await client.Holiday().load({ id: 1 })
+  const holiday = await client.Holiday().load({ year: 1 })
   console.log(holiday.data())
 } catch (err) {
   console.error('load failed:', err)
@@ -122,7 +122,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ChineseHolidayCalendarSDK.test()
 
-const holiday = await client.Holiday().load({ id: 1 })
+const holiday = await client.Holiday().load({ year: 1 })
 // holiday is the Holiday entity; .data() reads its mock record
 console.log(holiday.data())
 ```
@@ -142,11 +142,11 @@ Entity instances remember their last match and data:
 const entity = client.Holiday()
 
 // First call runs the operation and stores its result
-await entity.load({ id: 1 })
+await entity.load({ year: 1 })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id)
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -292,7 +292,6 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `date` | The date of the holiday in YYYY-MM-DD format |
-| `id` |  |
 | `isOffDay` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | The name of the holiday in Chinese |
 
@@ -320,14 +319,13 @@ Create an instance: `const holiday = client.Holiday()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `date` | `string` | The date of the holiday in YYYY-MM-DD format |
-| `id` | `string` |  |
 | `isOffDay` | `boolean` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `string` | The name of the holiday in Chinese |
 
 #### Example: Load
 
 ```ts
-const holiday = await client.Holiday().load({ id: 1 })
+const holiday = await client.Holiday().load({ year: 1 })
 ```
 
 ## Features
@@ -485,10 +483,10 @@ calls on the same instance can rely on this state.
 
 ```ts
 const holiday = client.Holiday()
-await holiday.load({ id: 1 })
+await holiday.load({ year: 1 })
 
 // holiday.data() now returns the holiday data from the last `load`
-// holiday.match() returns { id: 1 }
+// holiday.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

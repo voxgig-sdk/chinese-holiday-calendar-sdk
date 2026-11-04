@@ -29,7 +29,7 @@ describe("HolidayEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:Holiday(nil):load({ ["id"] = "x" }, nil)
+    local _, err = client:Holiday(nil):load({ ["year"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("HolidayEntity", function()
     local setup = holiday_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"load"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "holiday." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -45,18 +45,11 @@ describe("HolidayEntity", function()
       end
     end
     if setup.live then
-      for _live_key, _live_ex in pairs({["holiday01"] = 2024}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          setup.idmap[_live_key] = _live_ex
-        end
-      end
+      pending("Live coverage incomplete: the flow has no step to run")
+      return
     end
+
     local client = setup.client
-    if setup.live then
-      runner.live_existing(pending, setup, LIVE_STRICT, "holiday", function()
-        return { { id = setup.idmap["holiday01"] } }
-      end)
-    end
 
     -- Bootstrap entity data from existing test data.
     local holiday_ref01_data_raw = vs.items(helpers.to_map(
@@ -65,17 +58,6 @@ describe("HolidayEntity", function()
     if #holiday_ref01_data_raw > 0 then
       holiday_ref01_data = helpers.to_map(holiday_ref01_data_raw[1][2])
     end
-
-    -- LOAD
-    local holiday_ref01_ent = client:Holiday(nil)
-    local holiday_ref01_match_dt0 = {
-      id = holiday_ref01_data["id"],
-    }
-    local holiday_ref01_data_dt0_loaded, err = holiday_ref01_ent:load(holiday_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local holiday_ref01_data_dt0_load_result = helpers.to_map(type(holiday_ref01_data_dt0_loaded) == 'table' and holiday_ref01_data_dt0_loaded.data_get and holiday_ref01_data_dt0_loaded:data_get() or holiday_ref01_data_dt0_loaded)
-    assert.is_not_nil(holiday_ref01_data_dt0_load_result)
-    assert.are.equal(holiday_ref01_data_dt0_load_result["id"], holiday_ref01_data["id"])
 
   end)
 end)

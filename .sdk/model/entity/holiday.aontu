@@ -13,12 +13,6 @@ main: kit: entity: holiday: {
       sh: "The date of the holiday in YYYY-MM-DD format"
       t: "`$STRING`"
     }
-    id: {
-      h: "Id"
-      n: "id"
-      r: false
-      t: "`$STRING`"
-    }
     isOffDay: {
       h: "Is Off Day"
       n: "isOffDay"
@@ -33,11 +27,6 @@ main: kit: entity: holiday: {
       sh: "The name of the holiday in Chinese"
       t: "`$STRING`"
     }
-  }
-
-  id: {
-    field: "id"
-    name: "id"
   }
 
   name: "holiday"
@@ -56,7 +45,7 @@ main: kit: entity: holiday: {
               {
                 ex: 2024
                 k: "param"
-                n: "id"
+                n: "year"
                 or: "year"
                 r: true
                 t: "`$INTEGER`"
@@ -67,13 +56,8 @@ main: kit: entity: holiday: {
           o: "/holidays/{year}"
           q: {
             exist: [
-              "id"
+              "year"
             ]
-          }
-          r: {
-            param: {
-              year: "id"
-            }
           }
           rs: {
             kind: "json"
@@ -84,7 +68,7 @@ main: kit: entity: holiday: {
               lit: "holidays"
             }
             {
-              var: "id"
+              var: "year"
             }
           ]
           t: {

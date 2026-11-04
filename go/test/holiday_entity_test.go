@@ -38,7 +38,7 @@ func TestHolidayEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.Holiday(nil).Load(map[string]any{"id": "x"}, nil)
+		_, err := client.Holiday(nil).Load(map[string]any{"year": "x"}, nil)
 		if sdkerr, ok := err.(*core.ChineseHolidayCalendarError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestHolidayEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"load"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "holiday." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,18 +63,8 @@ func TestHolidayEntity(t *testing.T) {
 			}
 		}
 		if setup.live {
-			for _liveKey, _liveEx := range map[string]any{"holiday01": float64(2024)} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					setup.idmap[_liveKey] = _liveEx
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			liveExisting(t, holidayEntityLiveStrict, setup.data, "holiday", func() (any, error) {
-				return []any{map[string]any{"id": setup.idmap["holiday01"]}}, nil
-			})
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
 		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
@@ -86,23 +76,6 @@ func TestHolidayEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = holidayRef01Data
-
-		// LOAD
-		holidayRef01Ent := client.Holiday(nil)
-		holidayRef01MatchDt0 := map[string]any{
-			"id": holidayRef01Data["id"],
-		}
-		holidayRef01DataDt0Loaded, err := holidayRef01Ent.Load(holidayRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		holidayRef01DataDt0LoadResult := core.ToMapAny(entityData(holidayRef01DataDt0Loaded))
-		if holidayRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if holidayRef01DataDt0LoadResult["id"] != holidayRef01Data["id"] {
-			t.Fatal("expected load result id to match")
-		}
 
 	})
 }

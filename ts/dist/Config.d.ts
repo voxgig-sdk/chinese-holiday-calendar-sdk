@@ -86,21 +86,10 @@ declare class Config {
                 name: string;
                 title: string;
                 type: string;
-                req?: undefined;
-                short?: undefined;
-                format?: undefined;
-            } | {
-                name: string;
-                title: string;
-                type: string;
                 req: boolean;
                 short: string;
                 format?: undefined;
             })[];
-            id: {
-                field: string;
-                name: string;
-            };
             name: string;
             op: {
                 load: {
@@ -118,11 +107,7 @@ declare class Config {
                             lit?: undefined;
                         })[];
                         parts: string[];
-                        rename: {
-                            param: {
-                                year: string;
-                            };
-                        };
+                        rename: {};
                         transform: {
                             req: string;
                             res: string;

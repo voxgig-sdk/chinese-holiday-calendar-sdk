@@ -33,7 +33,7 @@ class HolidayEntityTest extends TestCase
         $client = ChineseHolidayCalendarSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->Holiday(null)->load(["id" => 'x'], null);
+            $client->Holiday(null)->load(["year" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class HolidayEntityTest extends TestCase
         $setup = holiday_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["load"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "holiday." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -53,17 +53,10 @@ class HolidayEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"])) {
-            foreach (["holiday01" => 2024] as $_liveKey => $_liveEx) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    $setup["idmap"][$_liveKey] = $_liveEx;
-                }
-            }
+            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
         }
+
         $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            Runner::live_existing($setup, self::LIVE_STRICT, "holiday",
-                fn() => [["id" => $setup["idmap"]["holiday01"] ?? null]]);
-        }
 
         // Bootstrap entity data from existing test data.
         $holiday_ref01_data_raw = Vs::items(Helpers::to_map(
@@ -72,16 +65,6 @@ class HolidayEntityTest extends TestCase
         if (count($holiday_ref01_data_raw) > 0) {
             $holiday_ref01_data = Helpers::to_map($holiday_ref01_data_raw[0][1]);
         }
-
-        // LOAD
-        $holiday_ref01_ent = $client->Holiday(null);
-        $holiday_ref01_match_dt0 = [
-            "id" => $holiday_ref01_data["id"],
-        ];
-        $holiday_ref01_data_dt0_loaded = $holiday_ref01_ent->load($holiday_ref01_match_dt0, null);
-        $holiday_ref01_data_dt0_load_result = Helpers::to_map(is_object($holiday_ref01_data_dt0_loaded) && method_exists($holiday_ref01_data_dt0_loaded, 'data_get') ? $holiday_ref01_data_dt0_loaded->data_get() : $holiday_ref01_data_dt0_loaded);
-        $this->assertNotNull($holiday_ref01_data_dt0_load_result);
-        $this->assertEquals($holiday_ref01_data_dt0_load_result["id"], $holiday_ref01_data["id"]);
 
     }
 }

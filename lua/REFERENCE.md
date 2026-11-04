@@ -91,7 +91,6 @@ local holiday = client:Holiday(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `date` | `string` | Yes | The date of the holiday in YYYY-MM-DD format |
-| `id` | `string` | No |  |
 | `isOffDay` | `boolean` | Yes | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `string` | Yes | The name of the holiday in Chinese |
 
@@ -102,7 +101,7 @@ local holiday = client:Holiday(nil)
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local result, err = client:Holiday():load({ id = 1 })
+local result, err = client:Holiday():load({ year = 1 })
 ```
 
 ### Common Methods

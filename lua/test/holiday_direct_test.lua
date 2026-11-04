@@ -28,18 +28,21 @@ describe("HolidayDirect", function()
       pending(_reason or "skipped via sdk-test-control.json")
       return
     end
+    if setup.live then
+      runner.live_pace()
+    end
     local client = setup.client
 
     local params = {}
     local query = {}
     if setup.live then
-      params["id"] = 2024
+      params["year"] = 2024
     else
-      params["id"] = "direct01"
+      params["year"] = "direct01"
     end
 
     local result, err = client:direct({
-      path = "holidays/{id}",
+      path = "holidays/{year}",
       method = "GET",
       params = params,
       query = query,
@@ -95,7 +98,7 @@ function holiday_direct_setup(mockres)
       idmap = {}
     end
     -- A path parameter's example stands in for an id *_ENTID does not give.
-    for _k, _v in pairs({["holiday01"] = 2024}) do
+    for _k, _v in pairs({["year01"] = 2024}) do
       if idmap[_k] == nil then
         idmap[_k] = _v
       end

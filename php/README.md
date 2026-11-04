@@ -41,7 +41,7 @@ $client = new ChineseHolidayCalendarSDK();
 ```php
 try {
     // load() returns the ENTITY — call data_get() for the Holiday record (throws on error).
-    $holiday = $client->Holiday()->load(["id" => 1]);
+    $holiday = $client->Holiday()->load(["year" => 1]);
     print_r($holiday->data_get());
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -56,7 +56,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $holiday = $client->Holiday()->load(["id" => 1]);
+    $holiday = $client->Holiday()->load(["year" => 1]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -123,17 +123,14 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```php
-$client = ChineseHolidayCalendarSDK::test([
-    "entity" => ["holiday" => ["test01" => ["id" => "test01"]]],
-]);
+$client = ChineseHolidayCalendarSDK::test();
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$holiday = $client->Holiday()->load(["id" => "test01"]);
+$holiday = $client->Holiday()->load(["year" => 1]);
 print_r($holiday->data_get());
 ```
 
@@ -254,7 +251,6 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `date` | The date of the holiday in YYYY-MM-DD format |
-| `id` |  |
 | `isOffDay` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | The name of the holiday in Chinese |
 
@@ -282,7 +278,6 @@ Create an instance: `$holiday = $client->Holiday();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `date` | `string` | The date of the holiday in YYYY-MM-DD format |
-| `id` | `string` |  |
 | `isOffDay` | `bool` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `string` | The name of the holiday in Chinese |
 
@@ -290,7 +285,7 @@ Create an instance: `$holiday = $client->Holiday();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the Holiday record (throws on error).
-$holiday = $client->Holiday()->load(["id" => 1]);
+$holiday = $client->Holiday()->load(["year" => 1]);
 ```
 
 ## Features
@@ -456,7 +451,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $holiday = $client->Holiday();
-$holiday->load(["id" => 1]);
+$holiday->load(["year" => 1]);
 
 // $holiday->data_get() now returns the holiday data from the last load
 // $holiday->match_get() returns the last match criteria

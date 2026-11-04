@@ -16,7 +16,7 @@ const PLAN = [
         "path": "/holidays/{year}",
         "args": [
             {
-                "name": "id",
+                "name": "year",
                 "wire": "year",
                 "value": 2024
             }

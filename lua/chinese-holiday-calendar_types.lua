@@ -8,12 +8,11 @@
 
 ---@class Holiday
 ---@field date string
----@field id? string
 ---@field isOffDay boolean
 ---@field name string
 
 ---@class HolidayLoadMatch
----@field id number
+---@field year number
 
 local M = {}
 

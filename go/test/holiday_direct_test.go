@@ -30,18 +30,21 @@ func TestHolidayDirect(t *testing.T) {
 			t.Skip(_reason)
 			return
 		}
+		if setup.live {
+			livePace()
+		}
 		client := setup.client
 
 		params := map[string]any{}
 		query := map[string]any{}
 		if setup.live {
-			params["id"] = 2024
+			params["year"] = 2024
 		} else {
-			params["id"] = "direct01"
+			params["year"] = "direct01"
 		}
 
 		result, err := client.Direct(map[string]any{
-			"path":   "holidays/{id}",
+			"path":   "holidays/{year}",
 			"method": "GET",
 			"params": params,
 			"query":  query,
@@ -138,7 +141,7 @@ func holidayDirectSetup(mockres any) *holidayDirectSetupResult {
 			}
 		}
 		// A path parameter's example stands in for an id *_ENTID does not give.
-		for k, v := range map[string]any{"holiday01": 2024} {
+		for k, v := range map[string]any{"year01": 2024} {
 			if idmap[k] == nil {
 				idmap[k] = v
 			}

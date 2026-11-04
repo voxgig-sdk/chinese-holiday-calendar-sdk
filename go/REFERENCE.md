@@ -99,7 +99,6 @@ fmt.Println(holiday.GetName()) // "holiday"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `date` | `string` | Yes | The date of the holiday in YYYY-MM-DD format |
-| `id` | `string` | No |  |
 | `isOffDay` | `bool` | Yes | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `string` | Yes | The name of the holiday in Chinese |
 
@@ -110,7 +109,7 @@ fmt.Println(holiday.GetName()) // "holiday"
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-result, err := client.Holiday(nil).Load(map[string]any{"id": 1}, nil)
+result, err := client.Holiday(nil).Load(map[string]any{"year": 1}, nil)
 if err != nil {
     panic(err)
 }

@@ -93,7 +93,6 @@ $holiday = $client->Holiday();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `date` | `string` | Yes | The date of the holiday in YYYY-MM-DD format |
-| `id` | `string` | No |  |
 | `isOffDay` | `bool` | Yes | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `string` | Yes | The name of the holiday in Chinese |
 
@@ -104,7 +103,7 @@ $holiday = $client->Holiday();
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$result = $client->Holiday()->load(["id" => 1]);
+$result = $client->Holiday()->load(["year" => 1]);
 ```
 
 ### Common Methods

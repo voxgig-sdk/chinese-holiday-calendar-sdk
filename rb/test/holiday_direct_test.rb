@@ -24,18 +24,19 @@ class HolidayDirectTest < Minitest::Test
       skip(_reason || "skipped via sdk-test-control.json")
       return
     end
+    Runner.live_pace if setup[:live]
     client = setup[:client]
 
     params = {}
     query = {}
     if setup[:live]
-      params["id"] = 2024
+      params["year"] = 2024
     else
-      params["id"] = "direct01"
+      params["year"] = "direct01"
     end
 
     result = client.direct({
-      "path" => "holidays/{id}",
+      "path" => "holidays/{year}",
       "method" => "GET",
       "params" => params,
       "query" => query,
@@ -83,7 +84,7 @@ def holiday_direct_setup(mockres)
     client = ChineseHolidayCalendarSDK.new(merged_opts)
     idmap = env["CHINESE_HOLIDAY_CALENDAR_TEST_HOLIDAY_ENTID"]
     # A path parameter's example stands in for an id *_ENTID does not give.
-    idmap = { "holiday01" => 2024 }
+    idmap = { "year01" => 2024 }
       .merge(idmap.is_a?(Hash) ? idmap : {})
     return {
       client: client,

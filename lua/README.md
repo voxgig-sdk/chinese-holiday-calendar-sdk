@@ -38,10 +38,9 @@ local client = sdk.new()
 `load` returns the entity; `data_get()` reads its record.
 
 ```lua
-local holiday, err = client:Holiday():load({ id = 1 })
+local holiday, err = client:Holiday():load({ year = 1 })
 if err then error(err) end
-local rec = holiday:data_get()
-print(rec["id"])
+for k, val in pairs(holiday:data_get()) do print(k, val) end
 ```
 
 
@@ -51,7 +50,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local holiday, err = client:Holiday():load({ id = 1 })
+local holiday, err = client:Holiday():load({ year = 1 })
 if err then error(err) end
 ```
 
@@ -109,9 +108,21 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Holiday():load({ id = "test01" })
+local result, err = client:Holiday():load({ year = 1 })
 -- result is the entity; data_get() reads its mock record; err is set on failure
 ```
+
+### Verify the server over HTTPS
+
+An `https://` request goes through LuaSocket and LuaSec, and the SDK checks
+the server itself before any of the request is sent: its certificate against
+the system's trust store, and its name against the host (an address against
+the certificate's addresses). Nothing turns that off. `SSL_CERT_FILE` or
+`SSL_CERT_DIR` names the trust store, as for OpenSSL; with neither set and no
+system store found, an `https://` request fails rather than going unverified.
+`CHINESE_HOLIDAY_CALENDAR_CA_BUNDLE` names a PEM file of roots added to the store,
+for a local service with its own certificate authority or a self-signed
+certificate. A different policy is a custom fetch function, described next.
 
 ### Use a custom fetch function
 
@@ -215,7 +226,7 @@ itself — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local holiday, err = client:Holiday():load({ id = "example_id" })
+    local holiday, err = client:Holiday():load({ year = 1 })
     if err then error(err) end
     -- holiday is the loaded entity
 
@@ -229,7 +240,6 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `date` | The date of the holiday in YYYY-MM-DD format |
-| `id` |  |
 | `isOffDay` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | The name of the holiday in Chinese |
 
@@ -257,14 +267,13 @@ Create an instance: `local holiday = client:Holiday(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `date` | `string` | The date of the holiday in YYYY-MM-DD format |
-| `id` | `string` |  |
 | `isOffDay` | `boolean` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `string` | The name of the holiday in Chinese |
 
 #### Example: Load
 
 ```lua
-local holiday, err = client:Holiday():load({ id = 1 })
+local holiday, err = client:Holiday():load({ year = 1 })
 ```
 
 ## Features
@@ -430,7 +439,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local holiday = client:Holiday()
-holiday:load({ id = 1 })
+holiday:load({ year = 1 })
 
 -- holiday:data_get() now returns the holiday data from the last load
 -- holiday:match_get() returns the last match criteria

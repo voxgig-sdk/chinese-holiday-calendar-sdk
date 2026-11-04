@@ -88,7 +88,6 @@ holiday = client.Holiday()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `date` | `str` | Yes | The date of the holiday in YYYY-MM-DD format |
-| `id` | `str` | No |  |
 | `isOffDay` | `bool` | Yes | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `str` | Yes | The name of the holiday in Chinese |
 
@@ -99,7 +98,7 @@ holiday = client.Holiday()
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-result = client.Holiday().load({"id": 1})
+result = client.Holiday().load({"year": 1})
 ```
 
 ### Common Methods

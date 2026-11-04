@@ -27,7 +27,7 @@ support (`load`):
 
 ```ts
 const client = new ChineseHolidayCalendarSDK()
-const holiday = await client.Holiday().load({ id: 1 })
+const holiday = await client.Holiday().load({ year: 1 })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -51,7 +51,7 @@ const client = ChineseHolidayCalendarSDK.test({
     },
   },
 })
-const holiday = await client.Holiday().load({ id: 1 })
+const holiday = await client.Holiday().load({ year: 1 })
 // holiday is the Holiday entity; .data() reads its mock record
 console.log(holiday.data())
 ```
@@ -60,7 +60,7 @@ console.log(holiday.data())
 
 ```python
 client = ChineseHolidayCalendarSDK.test()
-holiday = client.Holiday().load({"id": "test01"})
+holiday = client.Holiday().load({"year": 1})
 print(holiday.data_get())
 ```
 
@@ -69,9 +69,9 @@ print(holiday.data_get())
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = ChineseHolidayCalendarSDK::test([
-    "entity" => ["holiday" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["holiday" => ["test01" => []]],
 ]);
-$holiday = $client->Holiday()->load(["id" => "test01"]);
+$holiday = $client->Holiday()->load(["year" => 1]);
 ```
 
 ### Golang
@@ -79,7 +79,7 @@ $holiday = $client->Holiday()->load(["id" => "test01"]);
 ```go
 client := sdk.Test()
 result, err := client.Holiday(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+    map[string]any{"year": 1}, nil,
 )
 ```
 
@@ -88,16 +88,16 @@ result, err := client.Holiday(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = ChineseHolidayCalendarSDK.test({
-  "entity" => { "holiday" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "holiday" => { "test01" => {} } },
 })
-holiday = client.Holiday.load({ "id" => "test01" })
+holiday = client.Holiday.load({ "year" => 1 })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Holiday():load({ id = "test01" })
+local result, err = client:Holiday():load({ year = 1 })
 ```
 
 ## Packages
@@ -124,7 +124,7 @@ const client = new ChineseHolidayCalendarSDK()
 
 // Load a specific holiday (returns the entity, a HolidayEntity)
 const holiday = await client.Holiday().load({
-  id: 1,
+  year: 1,
 })
 console.log(holiday.data())
 ```
@@ -184,7 +184,7 @@ client = ChineseHolidayCalendarSDK()
 
 
 # Load a specific holiday (returns the entity, raises on error)
-holiday = client.Holiday().load({"id": 1})
+holiday = client.Holiday().load({"year": 1})
 print(holiday.data_get())
 ```
 
@@ -198,7 +198,7 @@ $client = new ChineseHolidayCalendarSDK();
 
 
 // Load a specific holiday (returns the entity; data_get() reads its record; throws on error)
-$holiday = $client->Holiday()->load(["id" => 1]);
+$holiday = $client->Holiday()->load(["year" => 1]);
 print_r($holiday->data_get());
 ```
 
@@ -210,7 +210,7 @@ import sdk "github.com/voxgig-sdk/chinese-holiday-calendar-sdk/go"
 client := sdk.New()
 
 // Load a specific holiday (returns the entity; err is non-nil on failure)
-holiday, err := client.Holiday(nil).Load(map[string]any{"id": 1}, nil)
+holiday, err := client.Holiday(nil).Load(map[string]any{"year": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -226,7 +226,7 @@ client = ChineseHolidayCalendarSDK.new
 
 
 # Load a specific holiday (returns the entity; data_get reads its record; raises on error)
-holiday = client.Holiday.load({ "id" => 1 })
+holiday = client.Holiday.load({ "year" => 1 })
 puts holiday.data_get
 ```
 
@@ -240,7 +240,7 @@ local client = sdk.new()
 
 
 -- Load a specific holiday (returns the entity; err on failure)
-local holiday, err = client:Holiday():load({ id = 1 })
+local holiday, err = client:Holiday():load({ year = 1 })
 if err then error(err) end
 print(json.encode(holiday:data_get()))
 ```

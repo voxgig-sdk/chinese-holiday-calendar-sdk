@@ -2,31 +2,34 @@
   "existing": {
     "holiday": {
       "HOLIDAY00": {
-        "date": "s28",
-        "id": "HOLIDAY00",
-        "isOffDay": true,
-        "name": "s2b"
+        "date": "s1e",
+        "isOffDay": false,
+        "name": "s20",
+        "year": "YEAR01",
+        "id": "HOLIDAY00"
       },
       "HOLIDAY01": {
-        "date": "s50",
-        "id": "HOLIDAY01",
-        "isOffDay": true,
-        "name": "s53"
+        "date": "s3c",
+        "isOffDay": false,
+        "name": "s3e",
+        "year": "YEAR01",
+        "id": "HOLIDAY01"
       },
       "HOLIDAY02": {
-        "date": "s78",
-        "id": "HOLIDAY02",
-        "isOffDay": true,
-        "name": "s7b"
+        "date": "s5a",
+        "isOffDay": false,
+        "name": "s5c",
+        "year": "YEAR01",
+        "id": "HOLIDAY02"
       }
     }
   },
   "new": {
     "holiday": {
       "holiday_ref01": {
-        "date": "sa0",
-        "isOffDay": true,
-        "name": "sa3"
+        "date": "s78",
+        "isOffDay": false,
+        "name": "s7a"
       }
     }
   },

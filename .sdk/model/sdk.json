@@ -24,6 +24,7 @@
         "repr": "auto"
       },
       "contributor": {},
+      "copies": "merge",
       "doc": {
         "active": true,
         "assets": {
@@ -106,13 +107,6 @@
               "sh": "The date of the holiday in YYYY-MM-DD format",
               "t": "`$STRING`"
             },
-            "id": {
-              "a": true,
-              "h": "Id",
-              "n": "id",
-              "r": false,
-              "t": "`$STRING`"
-            },
             "isOffDay": {
               "a": true,
               "h": "Is Off Day",
@@ -129,10 +123,6 @@
               "sh": "The name of the holiday in Chinese",
               "t": "`$STRING`"
             }
-          },
-          "id": {
-            "field": "id",
-            "name": "id"
           },
           "name": "holiday",
           "op": {
@@ -153,7 +143,7 @@
                         "a": true,
                         "ex": 2024,
                         "k": "param",
-                        "n": "id",
+                        "n": "year",
                         "or": "year",
                         "r": true,
                         "t": "`$INTEGER`"
@@ -165,14 +155,10 @@
                   "o": "/holidays/{year}",
                   "q": {
                     "exist": [
-                      "id"
+                      "year"
                     ]
                   },
-                  "r": {
-                    "param": {
-                      "year": "id"
-                    }
-                  },
+                  "r": {},
                   "rs": {
                     "kind": "json",
                     "media": "application/json"
@@ -182,7 +168,7 @@
                       "lit": "holidays"
                     },
                     {
-                      "var": "id"
+                      "var": "year"
                     }
                   ],
                   "t": {
@@ -642,6 +628,9 @@
             }
           ]
         }
+      },
+      "http": {
+        "useragent": ""
       },
       "info": {
         "auth": false,

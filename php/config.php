@@ -121,11 +121,6 @@ class ChineseHolidayCalendarConfig
               'format' => 'date',
             ],
             [
-              'name' => 'id',
-              'title' => 'Id',
-              'type' => '`$STRING`',
-            ],
-            [
               'name' => 'isOffDay',
               'title' => 'Is Off Day',
               'type' => '`$BOOLEAN`',
@@ -139,10 +134,6 @@ class ChineseHolidayCalendarConfig
               'req' => true,
               'short' => 'The name of the holiday in Chinese',
             ],
-          ],
-          'id' => [
-            'field' => 'id',
-            'name' => 'id',
           ],
           'name' => 'holiday',
           'op' => [
@@ -159,18 +150,14 @@ class ChineseHolidayCalendarConfig
                       'lit' => 'holidays',
                     ],
                     [
-                      'var' => 'id',
+                      'var' => 'year',
                     ],
                   ],
                   'parts' => [
                     'holidays',
-                    '{id}',
+                    '{year}',
                   ],
-                  'rename' => [
-                    'param' => [
-                      'year' => 'id',
-                    ],
-                  ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
@@ -178,7 +165,7 @@ class ChineseHolidayCalendarConfig
                   'args' => [
                     'params' => [
                       [
-                        'name' => 'id',
+                        'name' => 'year',
                         'orig' => 'year',
                         'type' => '`$INTEGER`',
                         'kind' => 'param',
@@ -189,7 +176,7 @@ class ChineseHolidayCalendarConfig
                   ],
                   'select' => [
                     'exist' => [
-                      'id',
+                      'year',
                     ],
                   ],
                   'response' => [

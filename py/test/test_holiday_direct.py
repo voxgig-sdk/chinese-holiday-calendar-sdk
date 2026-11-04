@@ -30,19 +30,21 @@ class TestHolidayDirect:
         if _skip:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
+        if setup["live"]:
+            runner.live_pace()
         client = setup["client"]
 
         params = {}
         query = {}
         if setup["live"]:
-            params["id"] = 2024
+            params["year"] = 2024
             pass
         else:
-            params["id"] = "direct01"
+            params["year"] = "direct01"
             pass
 
         result = client.direct({
-            "path": "holidays/{id}",
+            "path": "holidays/{year}",
             "method": "GET",
             "params": params,
             "query": query,
@@ -83,7 +85,7 @@ def _holiday_direct_setup(mockres):
         client = ChineseHolidayCalendarSDK(merged_opts)
         idmap = env.get("CHINESE_HOLIDAY_CALENDAR_TEST_HOLIDAY_ENTID")
         # A path parameter's example stands in for an id *_ENTID does not give.
-        idmap = {"holiday01": 2024,
+        idmap = {"year01": 2024,
                  **(idmap if isinstance(idmap, dict) else {})}
         return {
             "client": client,

@@ -30,18 +30,21 @@ class HolidayDirectTest extends TestCase
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
         }
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         $client = $setup["client"];
 
         $params = [];
         $query = [];
         if ($setup["live"]) {
-            $params["id"] = 2024;
+            $params["year"] = 2024;
         } else {
-            $params["id"] = "direct01";
+            $params["year"] = "direct01";
         }
 
         $result = $client->direct([
-            "path" => "holidays/{id}",
+            "path" => "holidays/{year}",
             "method" => "GET",
             "params" => $params,
             "query" => $query,
@@ -90,7 +93,7 @@ function holiday_direct_setup($mockres)
         $client = new ChineseHolidayCalendarSDK($merged_opts);
         $idmap = $env["CHINESE_HOLIDAY_CALENDAR_TEST_HOLIDAY_ENTID"] ?? [];
         // A path parameter's example stands in for an id *_ENTID does not give.
-        $idmap = array_merge(["holiday01" => 2024],
+        $idmap = array_merge(["year01" => 2024],
             is_array($idmap) ? $idmap : []);
         return [
             "client" => $client,

@@ -52,7 +52,7 @@ func main() {
     client := sdk.New()
 
     // Load a single holiday — the value is the entity; Data() reads its record.
-    holiday, err := client.Holiday(nil).Load(map[string]any{"id": 1}, nil)
+    holiday, err := client.Holiday(nil).Load(map[string]any{"year": 1}, nil)
     if err != nil {
         panic(err)
     }
@@ -67,7 +67,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-holiday, err := client.Holiday(nil).Load(map[string]any{"id": 1}, nil)
+holiday, err := client.Holiday(nil).Load(map[string]any{"year": 1}, nil)
 if err != nil {
     // handle err
     return
@@ -137,7 +137,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 holiday, err := client.Holiday(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+    map[string]any{"year": 1}, nil,
 )
 if err != nil {
     panic(err)
@@ -246,7 +246,7 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    holiday, err := client.Holiday(nil).Load(map[string]any{"id": "example_id"}, nil)
+    holiday, err := client.Holiday(nil).Load(map[string]any{"year": 1}, nil)
     if err != nil { /* handle */ }
     // holiday is the entity; holiday.(sdk.Entity).Data() reads its record
 
@@ -260,7 +260,6 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"date"` | The date of the holiday in YYYY-MM-DD format |
-| `"id"` |  |
 | `"isOffDay"` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `"name"` | The name of the holiday in Chinese |
 
@@ -288,14 +287,13 @@ Create an instance: `holiday := client.Holiday(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `date` | `string` | The date of the holiday in YYYY-MM-DD format |
-| `id` | `string` |  |
 | `isOffDay` | `bool` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `string` | The name of the holiday in Chinese |
 
 #### Example: Load
 
 ```go
-holiday, err := client.Holiday(nil).Load(map[string]any{"id": 1}, nil)
+holiday, err := client.Holiday(nil).Load(map[string]any{"year": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -463,7 +461,7 @@ stores the returned data and match criteria internally.
 
 ```go
 holiday := client.Holiday(nil)
-holiday.Load(map[string]any{"id": 1}, nil)
+holiday.Load(map[string]any{"year": 1}, nil)
 
 // holiday.Data() now returns the holiday data from the last load
 // holiday.Match() returns the last match criteria

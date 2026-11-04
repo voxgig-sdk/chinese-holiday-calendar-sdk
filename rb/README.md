@@ -44,7 +44,7 @@ client = ChineseHolidayCalendarSDK.new
 ```ruby
 begin
   # load returns the ENTITY — call data_get for the Holiday record (raises on error).
-  holiday = client.Holiday.load({ "id" => 1 })
+  holiday = client.Holiday.load({ "year" => 1 })
   puts holiday.data_get
 rescue => err
   warn "load failed: #{err}"
@@ -58,7 +58,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  holiday = client.Holiday.load({ "id" => 1 })
+  holiday = client.Holiday.load({ "year" => 1 })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -121,17 +121,14 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```ruby
-client = ChineseHolidayCalendarSDK.test({
-  "entity" => { "holiday" => { "test01" => { "id" => "test01" } } },
-})
+client = ChineseHolidayCalendarSDK.test
 
 # Entity ops return the ENTITY (raises on error);
 # data_get reads its mock record.
-holiday = client.Holiday.load({ "id" => "test01" })
+holiday = client.Holiday.load({ "year" => 1 })
 puts holiday.data_get
 ```
 
@@ -249,7 +246,6 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `date` | The date of the holiday in YYYY-MM-DD format |
-| `id` |  |
 | `isOffDay` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | The name of the holiday in Chinese |
 
@@ -277,7 +273,6 @@ Create an instance: `holiday = client.Holiday`
 | Field | Type | Description |
 | --- | --- | --- |
 | `date` | `String` | The date of the holiday in YYYY-MM-DD format |
-| `id` | `String` |  |
 | `isOffDay` | `Boolean` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `String` | The name of the holiday in Chinese |
 
@@ -285,7 +280,7 @@ Create an instance: `holiday = client.Holiday`
 
 ```ruby
 # load returns the ENTITY — call data_get for the Holiday record (raises on error).
-holiday = client.Holiday.load({ "id" => 1 })
+holiday = client.Holiday.load({ "year" => 1 })
 ```
 
 ## Features
@@ -451,7 +446,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 holiday = client.Holiday
-holiday.load({ "id" => 1 })
+holiday.load({ "year" => 1 })
 
 # holiday.data_get now returns the holiday data from the last load
 # holiday.match_get returns the last match criteria

@@ -18,7 +18,7 @@ type Holiday struct {
 
 // HolidayLoadMatch is the typed request payload for Holiday.LoadTyped.
 type HolidayLoadMatch struct {
-	Id int `json:"id"`
+	Year int `json:"year"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

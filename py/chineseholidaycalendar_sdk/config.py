@@ -124,11 +124,6 @@ def make_config():
             "format": "date",
           },
           {
-            "name": "id",
-            "title": "Id",
-            "type": "`$STRING`",
-          },
-          {
             "name": "isOffDay",
             "title": "Is Off Day",
             "type": "`$BOOLEAN`",
@@ -143,10 +138,6 @@ def make_config():
             "short": "The name of the holiday in Chinese",
           },
         ],
-        "id": {
-          "field": "id",
-          "name": "id",
-        },
         "name": "holiday",
         "op": {
           "load": {
@@ -162,18 +153,14 @@ def make_config():
                     "lit": "holidays",
                   },
                   {
-                    "var": "id",
+                    "var": "year",
                   },
                 ],
                 "parts": [
                   "holidays",
-                  "{id}",
+                  "{year}",
                 ],
-                "rename": {
-                  "param": {
-                    "year": "id",
-                  },
-                },
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
@@ -181,7 +168,7 @@ def make_config():
                 "args": {
                   "params": [
                     {
-                      "name": "id",
+                      "name": "year",
                       "orig": "year",
                       "type": "`$INTEGER`",
                       "kind": "param",
@@ -192,7 +179,7 @@ def make_config():
                 },
                 "select": {
                   "exist": [
-                    "id",
+                    "year",
                   ],
                 },
                 "response": {

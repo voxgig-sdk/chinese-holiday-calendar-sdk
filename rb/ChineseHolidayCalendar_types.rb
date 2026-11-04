@@ -13,9 +13,6 @@
 # @!attribute [rw] date
 #   @return [String]
 #
-# @!attribute [rw] id
-#   @return [String, nil]
-#
 # @!attribute [rw] isOffDay
 #   @return [Boolean]
 #
@@ -23,7 +20,6 @@
 #   @return [String]
 Holiday = Struct.new(
   :date,
-  :id,
   :isOffDay,
   :name,
   keyword_init: true
@@ -31,10 +27,10 @@ Holiday = Struct.new(
 
 # Request payload for Holiday#load.
 #
-# @!attribute [rw] id
+# @!attribute [rw] year
 #   @return [Integer]
 HolidayLoadMatch = Struct.new(
-  :id,
+  :year,
   keyword_init: true
 )
 

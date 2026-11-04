@@ -48,13 +48,13 @@ describe('HolidayDirect', async () => {
     const params: any = {}
     const query: any = {}
     if (setup.live) {
-      params.id = 2024
+      params.year = 2024
     } else {
-      params.id = 'direct01'
+      params.year = 'direct01'
     }
 
     const result: any = await client.direct({
-      path: 'holidays/{id}',
+      path: 'holidays/{year}',
       method: 'GET',
       params,
       query,
@@ -112,7 +112,7 @@ function directSetup(mockres?: any) {
       idmap = JSON.parse(idmap)
     }
     // A path parameter's example stands in for an id *_ENTID does not give.
-    idmap = Object.assign({ holiday01: 2024 },
+    idmap = Object.assign({ year01: 2024 },
       'object' === typeof idmap ? idmap : {})
 
     return { client, calls, live, idmap, transport }

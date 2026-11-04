@@ -99,11 +99,6 @@ func MakeConfig() map[string]any {
 						"format": "date",
 					},
 					map[string]any{
-						"name": "id",
-						"title": "Id",
-						"type": "`$STRING`",
-					},
-					map[string]any{
 						"name": "isOffDay",
 						"title": "Is Off Day",
 						"type": "`$BOOLEAN`",
@@ -117,10 +112,6 @@ func MakeConfig() map[string]any {
 						"req": true,
 						"short": "The name of the holiday in Chinese",
 					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
 				},
 				"name": "holiday",
 				"op": map[string]any{
@@ -137,18 +128,14 @@ func MakeConfig() map[string]any {
 										"lit": "holidays",
 									},
 									map[string]any{
-										"var": "id",
+										"var": "year",
 									},
 								},
 								"parts": []any{
 									"holidays",
-									"{id}",
+									"{year}",
 								},
-								"rename": map[string]any{
-									"param": map[string]any{
-										"year": "id",
-									},
-								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
@@ -156,7 +143,7 @@ func MakeConfig() map[string]any {
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"name": "id",
+											"name": "year",
 											"orig": "year",
 											"type": "`$INTEGER`",
 											"kind": "param",
@@ -167,7 +154,7 @@ func MakeConfig() map[string]any {
 								},
 								"select": map[string]any{
 									"exist": []any{
-										"id",
+										"year",
 									},
 								},
 								"response": map[string]any{

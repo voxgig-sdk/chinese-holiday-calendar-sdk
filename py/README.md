@@ -42,7 +42,7 @@ client = ChineseHolidayCalendarSDK()
 
 ```python
 try:
-    holiday = client.Holiday().load({"id": 1})
+    holiday = client.Holiday().load({"year": 1})
     print(holiday.data_get())
 except Exception as err:
     print(f"load failed: {err}")
@@ -55,7 +55,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    holiday = client.Holiday().load({"id": 1})
+    holiday = client.Holiday().load({"year": 1})
     print(holiday.data_get())
 except Exception as err:
     print(f"load failed: {err}")
@@ -123,7 +123,7 @@ Create a mock client for unit testing — no server required:
 client = ChineseHolidayCalendarSDK.test()
 
 # Entity ops return the entity, and list one per record; they raise on error.
-holiday = client.Holiday().load({"id": "test01"})
+holiday = client.Holiday().load({"year": 1})
 # data_get() on an entity reads its mock response record
 ```
 
@@ -241,7 +241,6 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `date` | The date of the holiday in YYYY-MM-DD format |
-| `id` |  |
 | `isOffDay` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | The name of the holiday in Chinese |
 
@@ -269,14 +268,13 @@ Create an instance: `holiday = client.Holiday()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `date` | `str` | The date of the holiday in YYYY-MM-DD format |
-| `id` | `str` |  |
 | `isOffDay` | `bool` | Whether this is an official day off (true) or a working day during a holiday period (false) |
 | `name` | `str` | The name of the holiday in Chinese |
 
 #### Example: Load
 
 ```python
-holiday = client.Holiday().load({"id": 1})
+holiday = client.Holiday().load({"year": 1})
 ```
 
 ## Features
@@ -441,7 +439,7 @@ stores the returned data and match criteria internally.
 
 ```python
 holiday = client.Holiday()
-holiday.load({"id": 1})
+holiday.load({"year": 1})
 
 # holiday.data_get() now returns the holiday data from the last load
 # holiday.match_get() returns the last match criteria
